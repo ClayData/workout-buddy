@@ -12,6 +12,32 @@ Users will also be able to select preset workout for a "quick start" option. The
 
 The user page will also show a user what workouts they have performed recently and their saved workout routines. There will also be a graph to show them how much time they have spent per week working out.
 
+### Schedule:
+
+#### May 16: MVP
+1. Authentication
+2. Working Data Base
+3. API routes: POST, GET to/from db
+4. Server
+5. React pages/components
+    ⋅⋅* Create workout page
+    ⋅⋅* Workout Form
+    ⋅⋅* Login page
+    ⋅⋅* Workout page
+    ⋅⋅* Timers
+
+#### May 23: Additions
+1. Preset workouts
+2. Profile page
+3. Charts
+4. Improve design
+
+#### May 30: Final Additions
+1. Presentation slides
+2. Final tweaks to layout
+3. Share workouts to common pool (through Admin)
+4. PWA?
+
 ### Mockup:
 ![Sign In](./Sign-in.jpg?raw=true "Sign In")
 ![Sign Up](./Sign-up.jpg?raw=true "Sign Up")
