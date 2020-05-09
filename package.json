@@ -4,7 +4,8 @@
   "description": "Application for creating, tracking and doing at home workouts",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.13"
   },
   "devDependencies": {},
   "scripts": {
