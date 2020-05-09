@@ -20,11 +20,11 @@ The user page will also show a user what workouts they have performed recently a
 3. API routes: POST, GET to/from db
 4. Server
 5. React pages/components
-    ⋅⋅* Create workout page
-    ⋅⋅* Workout Form
-    ⋅⋅* Login page
-    ⋅⋅* Workout page
-    ⋅⋅* Timers
+    * Create workout page
+    * Workout Form
+    * Login page
+    * Workout page
+    * Timers
 
 #### May 23: Additions
 1. Preset workouts
