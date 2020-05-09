@@ -12,5 +12,7 @@ Users will also be able to select preset workout for a "quick start" option. The
 
 The user page will also show a user what workouts they have performed recently and their saved workout routines. There will also be a graph to show them how much time they have spent per week working out.
 
-
+### Mockup:
+![Sign In](./Sign-in.jpg?raw=true "Sign In")
+![Sign Up](./Sign-up.jpg?raw=true "Sign Up")
 ![Workout Buddy](./landingPage.jpg?raw=true "Workout Buddy")
