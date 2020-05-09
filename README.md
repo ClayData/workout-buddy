@@ -15,22 +15,23 @@ The user page will also show a user what workouts they have performed recently a
 ### Schedule:
 
 #### May 16: MVP
-1. Authentication
-2. Working Data Base
-3. API routes: POST, GET to/from db
-4. Server
-5. React pages/components
+1. Working Data Base - Erik
+2. API routes: POST, GET to/from db - After db created
+3. Server - Done
+4. React pages/components
     * Create workout page
-    * Workout Form
-    * Login page
+    * Workout Form component - Sawyer
+    * Completed workouts component - Clay
+    * Login page - Talila
     * Workout page
-    * Timers
+    * Timers component - Sawyer
 
 #### May 23: Additions
 1. Preset workouts
 2. Profile page
 3. Charts
 4. Improve design
+5. Authentication - Clay
 
 #### May 30: Final Additions
 1. Presentation slides
