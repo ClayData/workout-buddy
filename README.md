@@ -16,3 +16,4 @@ The user page will also show a user what workouts they have performed recently a
 ![Sign In](./Sign-in.jpg?raw=true "Sign In")
 ![Sign Up](./Sign-up.jpg?raw=true "Sign Up")
 ![Workout Buddy](./landingPage.jpg?raw=true "Workout Buddy")
+![Workout Page](./Workout-Page.jpg?raw=true "Workout Page")
