@@ -1,0 +1,31 @@
+{
+  "name": "workout-buddy",
+  "version": "1.0.0",
+  "description": "Application for creating, tracking and doing at home workouts",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClayData/workout-buddy.git"
+  },
+  "keywords": [
+    "React",
+    "Node",
+    "Express",
+    "MongoDB"
+  ],
+  "author": "Clayton Ortiz, Erik Alfivn, Talila Burka, Sawyer Fisher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClayData/workout-buddy/issues"
+  },
+  "homepage": "https://github.com/ClayData/workout-buddy#readme"
+}
