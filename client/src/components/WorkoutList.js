@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   }
 
 const WorkoutList = (props) => {
-const classes = useStyles();
+  const classes = useStyles();
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
 
