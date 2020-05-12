@@ -11,13 +11,15 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
-else{
-    app.use(express.static("public"));
-}
+// else{
+//     app.use(express.static("public"));
+// }
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutDB")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutDB").catch((err) => {
+    console.log(err);
+})
 
 app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

@@ -1,20 +1,12 @@
 const router = require("express").Router();
 const workoutController = require("../controllers/workoutController");
 
-router.post("/api/workouts").post((req, res) => {
-    workoutController.createWorkout(req.body).then((response) => {
-        res.json(response)
-    })
-});
+router.route("/api/workouts/:user")
+    .get(workoutController.getUserWorkouts)
+    .post(workoutController.createWorkout)
 
-router.get("/api/workouts/:user", (req, res) => {
-    workoutController.getUserWorkouts(req.params.user).then((workouts) => {
-        res.json(workouts)
-    })
-});
-
-router.get("/", function(req, res) {
-    res.send("dsfjdsljf");
+router.get("/health", function(req, res) {
+    res.send("Hello from the express server!");
 })
 
 module.exports = router;
