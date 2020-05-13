@@ -2,15 +2,13 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import InputForm from '../../components/InputForm';
-import WorkoutListItem from '../../components/WorkoutListItem';
+import WorkoutListContainer from '../../components/WorkoutListContainer';
 
 const useStyles = makeStyles((theme) => ({
     root: {
        
     }
 })) 
-
-
 
 const Workouts = () => {
     const classes = useStyles();
@@ -19,7 +17,7 @@ const Workouts = () => {
             <Grid container direction="row" justify="space-around" alignItems="center">
                 <Grid item >
                     <h2>Completed Workouts</h2>
-                    <WorkoutListItem />    
+                    <WorkoutListContainer />    
                 </Grid>        
                 <Grid item >    
                     <h2>Create New Workout</h2>
@@ -41,7 +39,7 @@ const Workouts = () => {
                 </Grid>
                 <Grid item >
                     <h2>Existing Workouts</h2>
-                    <WorkoutListItem />
+                    <WorkoutListContainer />
                 </Grid>    
             </Grid>
         </div>
