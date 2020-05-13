@@ -38,7 +38,7 @@ const Workouts = () => {
                         />
                 </Grid>
                 <Grid item >
-                    <h2>Existing Workouts</h2>
+                    <h2>Saved Workouts</h2>
                     <WorkoutListContainer />
                 </Grid>    
             </Grid>
