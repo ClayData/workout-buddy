@@ -16,15 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-  function generate(element) {
-    return [0, 1, 2].map((value) =>
-      React.cloneElement(element, {
-        key: value,
-      }),
-    );
-  }
-
-const WorkoutList = (props) => {
+const WorkoutListItem = (props) => {
   const classes = useStyles();
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
@@ -33,7 +25,7 @@ const WorkoutList = (props) => {
     return (
         <div className={classes.demo}>
             <List dense={dense}>
-              {generate(
+              
                 <ListItem>
                   <ListItemIcon>
                     <FitnessCenterIcon />
@@ -43,10 +35,10 @@ const WorkoutList = (props) => {
                     secondary={secondary ? 'Secondary text' : null}
                   />
                 </ListItem>,
-              )}
+              
             </List>
         </div>
     )
 }
 
-export default WorkoutList;
+export default WorkoutListItem;
