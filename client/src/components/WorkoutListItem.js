@@ -4,19 +4,19 @@ import { makeStyles } from '@material-ui/core/styles';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+  root: {
       flexGrow: 1,
       maxWidth: 752,
-    },
-    demo: {
+  },
+  demo: {
       backgroundColor: theme.palette.background.paper,
-    },
-    title: {
+  },
+  title: {
       margin: theme.spacing(4, 0, 2),
-    },
-  }));
+  },
+}));
 
-const WorkoutListItem = (props) => {
+function WorkoutListItem(props) {
   const classes = useStyles();
   
   const [secondary, setSecondary] = React.useState(false);

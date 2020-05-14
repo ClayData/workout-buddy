@@ -6,6 +6,11 @@ module.exports = {
         .then(response => res.json(response))
         .catch(err => res.status(422).json(err));
     },
+    deleteWorkout: function(req, res) {
+        WorkoutModel.deleteOne({_id: req.params.id})
+        .then(response => res.json(response))
+        .catch(err => res.status(422).json(err));
+    },
     getUserWorkouts: function(req, res) {
         WorkoutModel.find({user: req.params.user})
         .then((workouts) => res.json(workouts))

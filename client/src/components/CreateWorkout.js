@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import InputForm from './InputForm';
+//import InputForm from './InputForm';
 import WorkoutListItem from './WorkoutListItem';
 import { Grid, TextField, List, Button } from '@material-ui/core';
 
