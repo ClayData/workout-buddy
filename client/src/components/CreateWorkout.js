@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import WorkoutListItem from './WorkoutListItem';
 import { Grid, TextField, List, Button } from '@material-ui/core';
 
