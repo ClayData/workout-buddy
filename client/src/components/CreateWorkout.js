@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import InputForm from './InputForm';
+
 import WorkoutListItem from './WorkoutListItem';
 import { Grid, TextField, List, Button } from '@material-ui/core';
 
@@ -18,12 +18,15 @@ function CreateWorkout() {
 
     const handleFormSubmit = (event) =>{
         event.preventDefault();
-        // if (formObject.exercise && formObject.seconds) {
+        if (formObject.exercise && formObject.seconds) {
             setExerciseList(exerciseList => [...exerciseList, formObject])
-        // }
+        }
         
     }
 
+    const formSubmit = (event) => {
+        event.preventDefault();
+    }
     
         return(
             <div>
@@ -54,17 +57,18 @@ function CreateWorkout() {
                                 variant="contained" 
                                 color="primary" 
                                 onClick={handleFormSubmit} 
-                                // disabled={!(formObject.exercise && formObject.seconds)}
+                                disabled={!(formObject.exercise && formObject.seconds)}
                                 type="submit"
                                 >Add Exercise</Button>
                             </Grid>
                         </form>
+                        {/* if no list displays h3 else will map through exerciseList */}
                         {exerciseList.length ? (
                         <List>
                             {exerciseList.map((exercise) => {
                                 return(
                                     <WorkoutListItem
-                                    text={exercise.exercise + " " + exercise.seconds}
+                                    text={exercise.exercise + " " + exercise.seconds + "s"}
                                     />
                                 )
                                 }
@@ -74,6 +78,12 @@ function CreateWorkout() {
                              <h3>No Exercises Added Yet</h3>
                          )
                             }
+                        
+                        <Button //Button for adding the workouts to the db
+                        variant="contained"
+                        color="primary"
+                        onClick={formSubmit}
+                        >Save Workout</Button>
                     </Grid>
                 </Grid>
             </div>
