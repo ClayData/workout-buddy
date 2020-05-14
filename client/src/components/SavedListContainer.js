@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { List } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import WorkoutListItem from "./WorkoutListItem";
+import SavedWorkoutItem from "./SavedWorkoutItem";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function WorkoutListContainer() {
+function SavedListContainer() {
     const classes = useStyles();
     const [dense, setDense] = React.useState(false);
 
@@ -33,10 +33,10 @@ function WorkoutListContainer() {
         <List dense={dense}>
             {console.log(workouts)}
             {workouts.map((workout, i) => {
-                return <WorkoutListItem title={workout.title} key={i} />
+                return <SavedWorkoutItem title={workout.title} key={i} />
             })}
         </List>
     )
 }
 
-export default WorkoutListContainer;
+export default SavedListContainer;

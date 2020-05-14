@@ -18,19 +18,27 @@ const useStyles = makeStyles((theme) => ({
 
 function WorkoutListItem(props) {
   const classes = useStyles();
+  
+  const [secondary, setSecondary] = React.useState(false);
 
-  return (
-    <div className={classes.demo}>
-      <ListItem>
-        <ListItemIcon>
-          <FitnessCenterIcon />
-        </ListItemIcon>
-        <ListItemText
-          primary={props.title}
-        />
-      </ListItem>
-    </div>
-  )
+
+    return (
+        <div className={classes.demo}>
+            
+              
+                <ListItem>
+                  <ListItemIcon>
+                    <FitnessCenterIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={props.text}
+                    secondary={secondary ? 'Secondary text' : null}
+                  />
+                </ListItem>
+              
+            
+        </div>
+    )
 }
 
 export default WorkoutListItem;
