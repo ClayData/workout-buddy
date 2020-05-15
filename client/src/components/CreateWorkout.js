@@ -15,7 +15,7 @@ function CreateWorkout() {
         setFormObject({...formObject, [name]:value })
     };
 
-    const handleFormSubmit = (event) =>{
+    const addExercise = (event) =>{
         event.preventDefault();
         if (formObject.exercise && formObject.seconds) {
             setExerciseList(exerciseList => [...exerciseList, formObject])
@@ -55,8 +55,8 @@ function CreateWorkout() {
                             <Button 
                             variant="contained" 
                             color="primary" 
-                            onClick={handleFormSubmit} 
-                            // disabled={!(formObject.exercise && formObject.seconds)}
+                            onClick={addExercise} 
+                            disabled={!(formObject.exercise && formObject.seconds)}
                             type="submit"
                             >Add Exercise</Button>
                         </Grid>

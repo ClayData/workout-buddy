@@ -24,7 +24,7 @@ function SavedListContainer() {
     const [workouts, setWorkouts] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/workouts/erik").then((results) => {
+        axios.get("/api/workouts").then((results) => {
             setWorkouts(results.data);
         });
     }, [])
