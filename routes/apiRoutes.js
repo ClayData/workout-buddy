@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const workoutController = require("../controllers/workoutController");
 
-router.route("/api/workouts/:user")
+router.route("/api/workouts")
     .get(workoutController.getUserWorkouts)
     .post(workoutController.createWorkout)
     
