@@ -15,8 +15,8 @@ const Workouts = () => {
     const classes = useStyles();
     return(
         <div>
-            <Grid container direction="row" justify="space-around" alignItems="centerg">
-            <Grid item >
+            <Grid container direction="row" justify="space-around" alignItems="baseline">
+                <Grid item >
                     <h2>Completed Workouts</h2>
                     <CompletedListContainer />    
                 </Grid>       
