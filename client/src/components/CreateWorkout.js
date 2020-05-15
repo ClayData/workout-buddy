@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import WorkoutListItem from './WorkoutListItem';
 import { Grid, TextField, List, Button } from '@material-ui/core';
+import API from '../utils/API';
 
 function CreateWorkout() {
     
@@ -15,9 +16,9 @@ function CreateWorkout() {
         setFormObject({...formObject, [name]:value })
     };
 
-    const handleFormSubmit = (event) =>{
+    const addExercise = (event) =>{
         event.preventDefault();
-        if (formObject.exercise && formObject.seconds) {
+        if (formObject.exercise && formObject.duration) {
             setExerciseList(exerciseList => [...exerciseList, formObject])
         }
         
@@ -25,6 +26,10 @@ function CreateWorkout() {
 
     const formSubmit = (event) => {
         event.preventDefault();
+        API.saveWorkout({
+            title: workoutName,
+            exercises: exerciseList
+        });
     }
     
     return(
@@ -46,7 +51,7 @@ function CreateWorkout() {
                             onChange={handleInputChange}
                             />
                             <TextField
-                            name="seconds"
+                            name="duration"
                             type="Number"
                             className="number"
                             id="time"
@@ -55,8 +60,8 @@ function CreateWorkout() {
                             <Button 
                             variant="contained" 
                             color="primary" 
-                            onClick={handleFormSubmit} 
-                            // disabled={!(formObject.exercise && formObject.seconds)}
+                            onClick={addExercise} 
+                            // disabled={!(formObject.exercise && formObject.duration)}
                             type="submit"
                             >Add Exercise</Button>
                         </Grid>
@@ -66,7 +71,7 @@ function CreateWorkout() {
                         {exerciseList.map((exercise) => {
                             return(
                                 <WorkoutListItem
-                                text={exercise.exercise + " " + exercise.seconds}
+                                text={exercise.exercise + " " + exercise.duration}
                                 />
                             )
                             }
@@ -76,6 +81,14 @@ function CreateWorkout() {
                             <h3>No Exercises Added Yet</h3>
                         )
                         }
+                        <Button
+                            variant="contained" 
+                            color="primary" 
+                            onClick={formSubmit} 
+                            type="submit"
+                            >
+                                Save Workout
+                        </Button>
                 </Grid>
             </Grid>
         </div>

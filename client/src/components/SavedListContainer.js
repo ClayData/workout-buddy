@@ -3,6 +3,7 @@ import axios from "axios";
 import { List } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import SavedWorkoutItem from "./SavedWorkoutItem";
+import API from '../utils/API';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,7 +25,7 @@ function SavedListContainer() {
     const [workouts, setWorkouts] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/workouts/erik").then((results) => {
+        API.getWorkouts().then((results) => {
             setWorkouts(results.data);
         });
     }, [])
