@@ -15,5 +15,15 @@ module.exports = {
         WorkoutModel.find({user: req.params.user})
         .then((workouts) => res.json(workouts))
         .catch(err => res.status(422).json(err));
+    },
+    getWorkoutById: function(req, res) {
+        WorkoutModel.find({_id: req.params.id})
+        .then((workouts) => res.json(workouts))
+        .catch(err => res.status(422).json(err));
+    },
+    getCompletedWorkouts: function(req, res) {
+        WorkoutModel.find({completed: true})
+        .then((workouts) => res.json(workouts))
+        .catch(err => res.status(422).json(err));
     }
 }
