@@ -4,14 +4,19 @@
   "description": "Application for creating, tracking and doing at home workouts",
   "main": "server.js",
   "dependencies": {
+    "concurrently": "^5.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.13",
     "react-router-dom": "^5.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js"
   },
   "repository": {
