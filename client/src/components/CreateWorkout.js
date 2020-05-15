@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import InputForm from './InputForm';
 import WorkoutListItem from './WorkoutListItem';
 import { Grid, TextField, List, Button } from '@material-ui/core';
 
@@ -18,12 +17,15 @@ function CreateWorkout() {
 
     const handleFormSubmit = (event) =>{
         event.preventDefault();
-        // if (formObject.exercise && formObject.seconds) {
+        if (formObject.exercise && formObject.seconds) {
             setExerciseList(exerciseList => [...exerciseList, formObject])
-        // }
+        }
         
     }
 
+    const formSubmit = (event) => {
+        event.preventDefault();
+    }
     
     return(
         <div>
