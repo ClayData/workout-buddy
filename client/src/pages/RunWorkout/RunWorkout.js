@@ -1,46 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Button } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
+import API from '../../utils/API';
 
 function RunWorkout() {
 
-    const [bigTime, SetBigTime] = useState(100);
-    const [lilTime, SetLilTime] = useState(30);
-    let changingLilTime = lilTime;
-    let changingBigTime = bigTime;
+    let [bigTime, SetBigTime] = useState(100);
+    let [lilTime, SetLilTime] = useState(30);
+    let [exerciseTimes, SetExerciseTimes] = useState([]);
+    let [runningTimer, SetRunningTimer] = useState(false);
 
-    function bigChanger() {setInterval(function(){
-        let changingLilTime = lilTime;
-       changingBigTime--;
-       
-    }, 1000)
-}
+    function bigChanger(){
+         SetRunningTimer(true);
 
-    function lilChanger() {setInterval(function() {
-        changingLilTime--;
-        
-        
+        let timeInterval = setInterval(function() {
+            
+            if(bigTime === 0){
+                clearInterval(timeInterval)
+            }
+            if(lilTime === 0){
+                clearInterval(timeInterval)
+            }
+            SetBigTime(bigTime--)
+            SetLilTime(lilTime--)
+        }, 1000)
+    }
 
-        if(lilTime === 0){
-            SetLilTime("")
-            clearInterval()
-        }
-
-    }, 1000)
-}
-
+   
     useEffect(() => {
-        lilChanger();
+        API.getWorkout().then((res) => {
+            console.log(res)
+            SetLilTime(res);
+            SetBigTime(res);
+        })
+
+        if(runningTimer === false){
         bigChanger();
+        }
     })
 
 
     return(
         <div>
             <Typography>
-                {changingBigTime}
+                {bigTime}
             </Typography>
             <Typography>
-                {changingLilTime}
+                {lilTime}
             </Typography>
         </div>
     )

@@ -9,5 +9,8 @@ export default {
     },
     getCompleted: function(user) {
         return axios.get("/api/workouts/completed");
+    },
+    getWorkout: function(id){
+        return axios.get(`/api/workouts/${id}`)
     }
 }
