@@ -13,7 +13,7 @@ function App() {
           <Route exact path="/" component={Workouts} />
           <Route exact path="/workouts" component={Workouts} />
           <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/runworkout" component={RunWorkout} />
+          <Route exact path="/runworkout/:id" component={RunWorkout} />
       </div>
     </Router>
   );
