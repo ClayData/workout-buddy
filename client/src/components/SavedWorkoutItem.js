@@ -20,12 +20,12 @@ function SavedWorkoutItem(props) {
   const classes = useStyles();
   return (
     <div className={classes.demo}>
-      <ListItem>
+      <ListItem button onClick={props.onClick} data-id={props.workout._id}>
         <ListItemIcon>
           <FitnessCenterIcon />
         </ListItemIcon>
         <ListItemText
-          primary={props.title}
+          primary={props.workout.title}
         />
       </ListItem>
     </div>

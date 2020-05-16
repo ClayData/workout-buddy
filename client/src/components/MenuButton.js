@@ -40,6 +40,11 @@ export default function MenuButton() {
                     Sign Out
                 </Link>
             </MenuItem>
+            <MenuItem onClick={handleClose}>
+                <Link to="/runworkout" className={location.pathname === "/runworkout" ? "nav-link active" : "nav-link"}>
+                    Run Workout
+                </Link>
+            </MenuItem>
             
         </Menu>
     </div>
