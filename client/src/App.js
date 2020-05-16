@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Workouts from './pages/Workouts/Workouts';
 import SignIn from './pages/SignIn/SignIn';
+import RunWorkout from './pages/RunWorkout/RunWorkout';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route exact path="/" component={Workouts} />
           <Route exact path="/workouts" component={Workouts} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/runworkout" component={RunWorkout} />
       </div>
     </Router>
   );
