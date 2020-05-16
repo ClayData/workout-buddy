@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
 import API from '../../utils/API';
+import { useParams } from "react-router-dom";
 
 function RunWorkout() {
 
@@ -10,7 +11,7 @@ function RunWorkout() {
     let [runningTimer, SetRunningTimer] = useState(false);
 
     function bigChanger(){
-         SetRunningTimer(true);
+        SetRunningTimer(true);
 
         let timeInterval = setInterval(function() {
             
@@ -25,19 +26,18 @@ function RunWorkout() {
         }, 1000)
     }
 
-   
-    useEffect(() => {
-        API.getWorkout().then((res) => {
-            console.log(res)
-            SetLilTime(res);
-            SetBigTime(res);
-        })
+    const {id} = useParams();
 
+    useEffect(() => {
         if(runningTimer === false){
-        bigChanger();
+            API.getWorkout(id).then((res) => {
+                console.log(res.data)
+                //SetLilTime(res);
+                //SetBigTime(res);
+                //bigChanger();
+            })
         }
     })
-
 
     return(
         <div>

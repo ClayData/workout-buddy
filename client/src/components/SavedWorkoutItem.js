@@ -22,7 +22,6 @@ function SavedWorkoutItem(props) {
   const classes = useStyles();
   const location = useLocation();
   return (
-<<<<<<< HEAD
     <div>
         <Button className={classes.demo} onClick={() => {}} data-id={props.workout._id}>
             <ListItem>
@@ -38,17 +37,6 @@ function SavedWorkoutItem(props) {
                 </ListItemText>
             </ListItem>
         </Button>
-=======
-    <div className={classes.demo}>
-      <ListItem button onClick={props.onClick} data-id={props.workout._id}>
-        <ListItemIcon>
-          <FitnessCenterIcon />
-        </ListItemIcon>
-        <ListItemText
-          primary={props.workout.title}
-        />
-      </ListItem>
->>>>>>> master
     </div>
   )
 }
