@@ -16,10 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function WorkoutListItem(props) {
+function CompletedListItem(props) {
   const classes = useStyles();
-  const [secondary, setSecondary] = React.useState(false);
-  
   return (
     <div className={classes.demo}>
       <ListItem>
@@ -27,12 +25,11 @@ function WorkoutListItem(props) {
           <FitnessCenterIcon />
         </ListItemIcon>
         <ListItemText
-          primary={props.text}
-          secondary={secondary ? 'Secondary text' : null}
+          primary={props.workout.title}
         />
       </ListItem>
     </div>
   )
 }
 
-export default WorkoutListItem;
+export default CompletedListItem;

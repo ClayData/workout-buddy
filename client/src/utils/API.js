@@ -6,5 +6,8 @@ export default {
     },
     getWorkouts: function(user) {
         return axios.get("/api/workouts");
+    },
+    getCompleted: function(user) {
+        return axios.get("/api/workouts/completed");
     }
 }
