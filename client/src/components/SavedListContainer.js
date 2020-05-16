@@ -33,7 +33,7 @@ function SavedListContainer() {
         <List dense={dense}>
             {console.log(workouts)}
             {workouts.map((workout, i) => {
-                return <SavedWorkoutItem title={workout.title} key={i} />
+                return <SavedWorkoutItem workout={workout} key={i} />
             })}
         </List>
     )
