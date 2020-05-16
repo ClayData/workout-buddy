@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { List } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SavedWorkoutItem from "./SavedWorkoutItem";
+import CompletedListItem from "./CompletedListItem";
 import API from '../utils/API';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,26 +17,25 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SavedListContainer() {
+function CompletedListContainer() {
     const classes = useStyles();
     const [dense, setDense] = React.useState(false);
 
     const [workouts, setWorkouts] = useState([]);
 
     useEffect(() => {
-        API.getWorkouts().then((results) => {
+        API.getCompleted("erik").then((results) => {
             setWorkouts(results.data);
         });
     }, [])
 
     return(
         <List dense={dense}>
-            {console.log(workouts)}
             {workouts.map((workout, i) => {
-                return <SavedWorkoutItem title={workout.title} key={i} />
+                return <CompletedListItem title={workout} key={i} />
             })}
         </List>
     )
 }
 
-export default SavedListContainer;
+export default CompletedListContainer;

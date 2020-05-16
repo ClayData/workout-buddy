@@ -4,24 +4,20 @@ import { Grid, TextField, List, Button } from '@material-ui/core';
 import API from '../utils/API';
 
 function CreateWorkout() {
-    
     const [formObject, setFormObject] = useState({});
     const [exerciseList, setExerciseList] = useState([]);
     const [workoutName, setWorkoutName] = useState();
-        
-
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormObject({...formObject, [name]:value })
     };
 
-    const addExercise = (event) =>{
+    const addExercise = (event) => {
         event.preventDefault();
         if (formObject.exercise && formObject.duration) {
             setExerciseList(exerciseList => [...exerciseList, formObject])
         }
-        
     }
 
     const formSubmit = (event) => {
@@ -92,8 +88,7 @@ function CreateWorkout() {
                 </Grid>
             </Grid>
         </div>
-    )
-    
+    )  
 }
 
 export default CreateWorkout;
