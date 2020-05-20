@@ -1,12 +1,16 @@
 const express = require("express");
-
+const session = require("express-session");
 const mongoose = require("mongoose");
 const routes = require("./routes/apiRoutes");
+const bodyParser = require("body-parser");
 const app = express();
+const passport = require("./passport/setup");
+
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended:true }));
 app.use(express.json());
+
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
@@ -14,6 +18,13 @@ if (process.env.NODE_ENV === "production") {
 // else{
 //     app.use(express.static("public"));
 // }
+
+app.use(session({ secret: "spicy meatball",
+                  resave: true,
+                  saveUninitialized: true      
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(routes);
 
