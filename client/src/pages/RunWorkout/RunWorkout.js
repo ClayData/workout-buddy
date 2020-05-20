@@ -1,18 +1,61 @@
 import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import './RunWorkout.css';
 import API from '../../utils/API';
 import { useParams } from "react-router-dom";
 
-function formatTime(seconds) {
-    return
+const useStyles = makeStyles((theme) => ({
+    table: {
+        minWidth: 200,
+    },
+    root: {
+        flexGrow: 1,
+      },
+    paper: {
+        height: 140,
+        width: 100,
+    },
+    control: {
+        padding: theme.spacing(2),
+    },
+}));
+
+function formatTime(totalSeconds) {
+    let minutes = Math.floor(totalSeconds/60);
+    let seconds = totalSeconds % 60;
+
+    if(minutes < 10) {
+        minutes = "0" + minutes.toString()
+    }
+    else {
+        minutes = minutes.toString()
+    }
+    if(seconds < 10) {
+        seconds = "0" + seconds.toString()
+    }
+    else {
+        seconds = seconds.toString()
+    }
+
+    return [minutes, seconds];
 }
 
 function RunWorkout() {
     const [workoutTitle, SetWorkoutTitle] = useState(0);
     const [exercises, SetExercises] = useState([]);
-    const [bigTime, SetBigTime] = useState(0);
-    const [lilTime, SetLilTime] = useState(0);
-    const [workoutIndex, setWorkoutIndex] = useState(0);
+    const [bigTime, SetBigTime] = useState(["00", "00"]);
+    const [lilTime, SetLilTime] = useState(["00", "00"]);
+    const [workoutIndex, SetWorkoutIndex] = useState(0);
 
     let times = []
 
@@ -24,19 +67,17 @@ function RunWorkout() {
         let timeInterval = setInterval(function() {
             totalTime--;
             currentTime--;
-            console.log(currentTime);
-            console.log(totalTime);
             
             if(totalTime === 0){
                 clearInterval(timeInterval)
             }
             else if(currentTime === 0) {
-                setWorkoutIndex(workoutIndex + 1);
+                SetWorkoutIndex(workoutIndex + 1);
                 currentTime = times[workoutIndex]
             }
             
-            SetLilTime(currentTime);
-            SetBigTime(totalTime);
+            SetLilTime(formatTime(currentTime));
+            SetBigTime(formatTime(totalTime));
         }, 100)
     }
 
@@ -55,14 +96,48 @@ function RunWorkout() {
         })
     }, [])
 
+    const classes = useStyles();
+
     return(
         <div>
-            <h1>{workoutTitle}</h1>
-            <ul>
-                {exercises.map((exercise, i) => {
-                    return <li key={i}>{exercise.exercise}</li>
-                })}
-            </ul>
+            <br/>
+            <h2>{workoutTitle}</h2>
+
+            <Grid container justify="center" className={classes.root} spacing={2}>
+                <Grid item xs={4}>
+                <TableContainer component={Paper}>
+                    <Table className={classes.table} aria-label="simple table">
+                        <TableHead>
+                        <TableRow>
+                            <TableCell></TableCell>
+                            <TableCell><strong>Exercise</strong></TableCell>
+                            <TableCell align="left"><strong>Time</strong></TableCell>
+                        </TableRow>
+                        </TableHead>
+                        <TableBody>
+                        {exercises.map((exercise, i) => (
+                            <TableRow key={i}>
+                            <TableCell> <FitnessCenterIcon/> </TableCell>
+                            <TableCell component="th" scope="row">
+                                {exercise.exercise}
+                            </TableCell>
+                            <TableCell align="left">{exercise.duration}</TableCell>
+                            </TableRow>
+                        ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                </Grid>
+                <Grid item xs={8}>
+                    <div className="exerciseTime" style={{fontSize: "17vw"}}>
+                        {lilTime[0]}:{lilTime[1]}
+                    </div>
+                    <div className="exerciseTime" style={{fontSize: "6vw"}}>
+                        {bigTime[0]}:{bigTime[1]}
+                    </div>
+                </Grid>
+            </Grid>
+            <br/>
             <Button color="secondary" size="large" variant="contained" onClick={runTimer}>Start Workout</Button>
         </div>
     )
