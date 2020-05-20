@@ -4,18 +4,18 @@ import API from '../../utils/API';
 import { useParams } from "react-router-dom";
 
 function RunWorkout() {
-    const [bigTime, SetBigTime] = useState();
-    const [lilTime, SetLilTime] = useState();
+    const [bigTime, SetBigTime] = useState(0);
+    const [lilTime, SetLilTime] = useState(0);
+    const [workoutIndex, setWorkoutIndex] = useState(0);
 
     let times = []
     let totalTime;
     let currentTime;
-    let index = 0;
 
     function runTimer(){
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
         totalTime = times.reduce(reducer)
-        currentTime = times[index];
+        currentTime = times[workoutIndex];
 
         let timeInterval = setInterval(function() {
             totalTime--;
@@ -26,11 +26,10 @@ function RunWorkout() {
                 clearInterval(timeInterval)
             }
             else if(currentTime <= 0) {
-                console.log("jsdhfkjdsh")
-                index ++;
-                currentTime = times[index]
+                setWorkoutIndex(workoutIndex + 1);
+                currentTime = times[workoutIndex]
             }
-
+            
             SetLilTime(currentTime);
             SetBigTime(totalTime);
         }, 100)

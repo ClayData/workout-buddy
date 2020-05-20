@@ -32,7 +32,7 @@ function CompletedListContainer() {
     return(
         <List dense={dense}>
             {workouts.map((workout, i) => {
-                return <CompletedListItem title={workout} key={i} />
+                return <CompletedListItem workout={workout} key={i} />
             })}
         </List>
     )
