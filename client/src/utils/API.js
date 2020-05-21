@@ -11,6 +11,9 @@ export default {
         return axios.get("/api/workouts/completed");
     },
     getWorkout: function(id){
-        return axios.get(`/api/workouts/${id}`)
+        return axios.get(`/api/workouts/${id}`);
+    },
+    postUser: function(userData) {
+        return axios.post(`/register_login`, userData);
     }
 }

@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import WorkoutListItem from './WorkoutListItem';
 import { Grid, TextField, List, Button } from '@material-ui/core';
 import API from '../utils/API';
+import UserContext from '../utils/UserContext';
 
 function CreateWorkout() {
     const [formObject, setFormObject] = useState({});
     const [exerciseList, setExerciseList] = useState([]);
     const [workoutName, setWorkoutName] = useState();
+    const { user } = useContext(UserContext)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -24,7 +26,8 @@ function CreateWorkout() {
         event.preventDefault();
         API.saveWorkout({
             title: workoutName,
-            exercises: exerciseList
+            exercises: exerciseList,
+            user: user.userName
         });
     }
     
