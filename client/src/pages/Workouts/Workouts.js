@@ -5,6 +5,8 @@ import CreateWorkout from '../../components/CreateWorkout'
 import SavedListContainer from '../../components/SavedListContainer';
 import CompletedListContainer from '../../components/CompletedListContainer';
 
+
+
 const useStyles = makeStyles((theme) => ({
     number: {
        width: '100px'
@@ -12,21 +14,25 @@ const useStyles = makeStyles((theme) => ({
 })) 
 
 const Workouts = () => {
+    
+    
     const classes = useStyles();
     return(
-        <div>
-            <Grid container direction="row" justify="space-around" alignItems="baseline">
-                <Grid item >
-                    <h2>Completed Workouts</h2>
-                    <CompletedListContainer />    
-                </Grid>       
-                <CreateWorkout />
-                <Grid item >
-                    <h2>Saved Workouts</h2>
-                    <SavedListContainer />
-                </Grid>    
-            </Grid>
-        </div>
+        
+            <div>
+                <Grid container direction="row" justify="space-around" alignItems="baseline">
+                    <Grid item >
+                        <h2>Completed Workouts</h2>
+                        <CompletedListContainer />    
+                    </Grid>       
+                    <CreateWorkout />
+                    <Grid item >
+                        <h2>Saved Workouts</h2>
+                        <SavedListContainer />
+                    </Grid>    
+                </Grid>
+            </div>
+       
     )
 }
 
