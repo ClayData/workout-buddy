@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import WorkoutListItem from './WorkoutListItem';
 import { Grid, TextField, List, Button } from '@material-ui/core';
 import API from '../utils/API';
+import UserContext from '../utils/UserContext';
 
 function CreateWorkout() {
     const [formObject, setFormObject] = useState({});
     const [exerciseList, setExerciseList] = useState([]);
     const [workoutName, setWorkoutName] = useState();
+    const { user } = useContext(UserContext)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -17,14 +19,23 @@ function CreateWorkout() {
         event.preventDefault();
         if (formObject.exercise && formObject.duration) {
             setExerciseList(exerciseList => [...exerciseList, formObject])
+            clear();
         }
+    }
+
+    const clear = () => {
+        setFormObject({
+            exercise: "",
+            duration: ""
+        })
     }
 
     const formSubmit = (event) => {
         event.preventDefault();
         API.saveWorkout({
             title: workoutName,
-            exercises: exerciseList
+            exercises: exerciseList,
+            user: user.userName
         });
     }
     
@@ -45,6 +56,7 @@ function CreateWorkout() {
                             name="exercise"
                             id="exercise"
                             onChange={handleInputChange}
+                            value={formObject.exercise}
                             />
                             <TextField
                             name="duration"
@@ -52,6 +64,7 @@ function CreateWorkout() {
                             className="number"
                             id="time"
                             onChange={handleInputChange}
+                            value={formObject.duration}
                             />
                             <Button 
                             variant="contained" 

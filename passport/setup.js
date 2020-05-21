@@ -15,10 +15,13 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
     new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+        // Check for user
         User.findOne({ email: email })
             .then(user => {
+                // Create a new user
                 if (!user) {
                     const newUser = new User ({ email, password });
+                    // Hashes the password and the saves it to db
                     bcrypt.genSalt(10, (err, salt) => {
                         bcrypt.hash(newUser.password, salt, (err, hash) => {
                             if (err) throw err;
@@ -34,6 +37,7 @@ passport.use(
                         });
                     });
                 } else {
+                    //Match Password of user
                     bcrypt.compare(password, user.password, (err, isMatch) => {
                         if (err) throw err;
 
