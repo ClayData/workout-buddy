@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
@@ -9,6 +9,26 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+
+function formatTime(totalSeconds) {
+    let minutes = Math.floor(totalSeconds/60);
+    let seconds = totalSeconds % 60;
+
+    if(minutes < 10) {
+        minutes = "0" + minutes.toString()
+    }
+    else {
+        minutes = minutes.toString()
+    }
+    if(seconds < 10) {
+        seconds = "0" + seconds.toString()
+    }
+    else {
+        seconds = seconds.toString()
+    }
+
+    return minutes + ":" + seconds;
+}
 
 const useStyles = makeStyles((theme) => ({
     table: {
@@ -28,6 +48,11 @@ const useStyles = makeStyles((theme) => ({
 
 function RunExerciseList(props) {
     const classes = useStyles();
+
+    let totalTime = 0;
+    for(let exercise of props.exercises) {
+        totalTime += exercise.duration;
+    }
     return(
     <Grid item xs={4}>
         <TableContainer component={Paper}>
@@ -41,14 +66,21 @@ function RunExerciseList(props) {
                 </TableHead>
                 <TableBody>
                 {props.exercises.map((exercise, i) => (
-                    <TableRow key={i}>
-                    <TableCell> <FitnessCenterIcon/> </TableCell>
-                    <TableCell component="th" scope="row">
-                        {exercise.exercise}
-                    </TableCell>
-                    <TableCell align="left">{exercise.duration}</TableCell>
+                    <TableRow key={i} style={i === props.index ? {backgroundColor: "lightgreen"} : {backgroundColor: "white"}}>
+                        <TableCell> <FitnessCenterIcon/> </TableCell>
+                        <TableCell component="th" scope="row">
+                            {exercise.exercise}
+                        </TableCell>
+                        <TableCell align="left">{formatTime(exercise.duration)}</TableCell>
                     </TableRow>
                 ))}
+                <TableRow key="total">
+                    <TableCell></TableCell>
+                    <TableCell component="th" scope="row">
+                        <strong>Total Time</strong>
+                    </TableCell>
+                    <TableCell><strong>{formatTime(totalTime)}</strong></TableCell>
+                </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>

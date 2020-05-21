@@ -59,11 +59,15 @@ function RunWorkout() {
     const classes = useStyles();
 
     return (
-        <div>
+        <div className="runWorkout">
+            <br/>
             <h2>{workoutTitle}</h2>
-            <Grid container justify="center" className={classes.root} spacing={2}>
+            <Grid container justify="center" className={classes.root} spacing={1}>
                 <RunExerciseList exercises={exercises} index={workoutIndex} />
-                <Timer times={times} index={workoutIndex} SetIndex={SetWorkoutIndex} currentExercise={exercises[workoutIndex] ? exercises[workoutIndex].exercise : ""} run={runWorkout} />
+                <Timer times={times} index={workoutIndex} title={workoutTitle} SetIndex={SetWorkoutIndex} currentExercise={exercises[workoutIndex] ? exercises[workoutIndex].exercise : ""} run={runWorkout} />
+                <Grid item xs={2}>
+
+                </Grid>
             </Grid>
             <Button color="secondary" size="large" variant="contained" onClick={handleClick}>Start Workout</Button>
         </div>

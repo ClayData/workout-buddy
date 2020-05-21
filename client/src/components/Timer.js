@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
+import API from '../utils/API';
 
 function formatTime(totalSeconds) {
     let minutes = Math.floor(totalSeconds/60);
@@ -18,13 +19,14 @@ function formatTime(totalSeconds) {
         seconds = seconds.toString()
     }
 
-    return [minutes, seconds];
+    return minutes + ":" + seconds;
 }
 
 function Timer(props) {
-    const [bigTime, SetBigTime] = useState(["00", "00"]);
-    const [lilTime, SetLilTime] = useState(["00", "00"]);
+    const [bigTime, SetBigTime] = useState(["00:00"]);
+    const [lilTime, SetLilTime] = useState(["00:00"]);
     const [runningTimer, SetRunningTimer] = useState(false);
+    const [completed, SetCompleted] = useState(false);
 
     let times = props.times;
 
@@ -34,12 +36,17 @@ function Timer(props) {
         let index = 0;
         let currentTime = times[index];
 
+        SetLilTime(formatTime(currentTime));
+        SetBigTime(formatTime(totalTime));
+
         let timeInterval = setInterval(function() {
             totalTime--;
             currentTime--;
             console.log(index);
             
             if(totalTime === 0){
+                SetCompleted(true);
+                //API.setCompleted()
                 clearInterval(timeInterval)
             }
             else if(currentTime === 0) {
@@ -50,7 +57,7 @@ function Timer(props) {
             
             SetLilTime(formatTime(currentTime));
             SetBigTime(formatTime(totalTime));
-        }, 200)
+        }, 100)
     }
 
     useEffect(() => {console.log("Rendered!");}, []);
@@ -61,13 +68,13 @@ function Timer(props) {
     }
 
     return (
-        <Grid item xs={8}>
-            <h1 className="exerciseName">{props.currentExercise}</h1>
+        <Grid item xs={6} className="timers">
+            <h1 className="exerciseName">{!runningTimer ? props.title : !completed ? props.currentExercise : "Workout Completed!"}</h1>
             <div className="exerciseTime" style={{fontSize: "16vw"}}>
-                {lilTime[0]}:{lilTime[1]}
+                {lilTime}
             </div>
             <div className="exerciseTime" style={{fontSize: "5vw"}}>
-                {bigTime[0]}:{bigTime[1]}
+                {bigTime}
             </div>
         </Grid>
     )
