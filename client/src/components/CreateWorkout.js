@@ -19,7 +19,15 @@ function CreateWorkout() {
         event.preventDefault();
         if (formObject.exercise && formObject.duration) {
             setExerciseList(exerciseList => [...exerciseList, formObject])
+            clear();
         }
+    }
+
+    const clear = () => {
+        setFormObject({
+            exercise: "",
+            duration: ""
+        })
     }
 
     const formSubmit = (event) => {
@@ -48,6 +56,7 @@ function CreateWorkout() {
                             name="exercise"
                             id="exercise"
                             onChange={handleInputChange}
+                            value={formObject.exercise}
                             />
                             <TextField
                             name="duration"
@@ -55,6 +64,7 @@ function CreateWorkout() {
                             className="number"
                             id="time"
                             onChange={handleInputChange}
+                            value={formObject.duration}
                             />
                             <Button 
                             variant="contained" 
