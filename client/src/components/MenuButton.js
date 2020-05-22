@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link, useLocation } from "react-router-dom";
+import API from "../utils/API"
 
 export default function MenuButton() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -16,6 +17,7 @@ export default function MenuButton() {
   
     const handleClose = () => {
       setAnchorEl(null);
+      API.signOut()
     };
 
     return(
