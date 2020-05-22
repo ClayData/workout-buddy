@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import MenuButton from './MenuButton';
+import UserContext from '../utils/UserContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
     const classes = useStyles();
+    const { user } = useContext(UserContext);
 
     return(
         <div className={classes.root}>
@@ -22,6 +24,9 @@ function NavBar() {
                 <MenuButton/>
                 <Typography variant="h6" className={classes.title}>
                     Workout Buddy
+                </Typography>
+                <Typography variant="h6" className={classes.title}>
+                    {user.userName}
                 </Typography>
                 </Toolbar>
             </AppBar>
