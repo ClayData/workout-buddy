@@ -13,6 +13,9 @@ export default {
     setCompleted: function(id) {
         return axios.put(`/api/workout/completed/${id}`);
     },
+    incrementCompleted: function(id, timesCompleted) {
+        return axios.put(`/api/workout/increment/${id}/${timesCompleted}`);
+    },
     getWorkout: function(id){
         return axios.get(`/api/workout/${id}`);
     },

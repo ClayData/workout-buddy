@@ -42,13 +42,16 @@ function Timer(props) {
         let timeInterval = setInterval(function() {
             totalTime--;
             currentTime--;
-            console.log(index);
             
             if(totalTime === 0){
                 SetCompleted(true);
 
-                //Mark workout as completed back in DB
-                API.setCompleted(props.id);
+                //Mark workout as completed back in DB and increment times completed
+                API.setCompleted(props.id)
+                .then((res) => {
+                    API.incrementCompleted(props.id, res.data.timesCompleted + 1);
+                });
+
                 clearInterval(timeInterval)
             }
             else if(currentTime === 0) {

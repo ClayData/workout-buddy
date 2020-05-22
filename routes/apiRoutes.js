@@ -13,6 +13,9 @@ router.route("/api/workouts/completed/:user")
 
 router.route("/api/workout/completed/:id")
     .put(workoutController.setCompletedWorkout)
+
+router.route("/api/workout/increment/:id/:timesCompleted")
+    .put(workoutController.incrementCompletedWorkout)
     
 router.route("/api/workout/:id")
     .delete(workoutController.deleteWorkout)

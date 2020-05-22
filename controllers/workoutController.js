@@ -23,11 +23,17 @@ module.exports = {
     },
     getCompletedWorkouts: function(req, res) {
         WorkoutModel.find({user: req.params.user, completed: true})
+        .sort({ timesCompleted: -1 })
         .then((workouts) => res.json(workouts))
         .catch(err => res.status(422).json(err));
     },
     setCompletedWorkout: function(req, res) {
         WorkoutModel.findOneAndUpdate({_id: req.params.id}, {completed: true})
+        .then((response) => res.json(response))
+        .catch(err => res.status(422).json(err));
+    },
+    incrementCompletedWorkout: function(req, res) {
+        WorkoutModel.findOneAndUpdate({_id: req.params.id}, {timesCompleted: req.params.timesCompleted})
         .then((response) => res.json(response))
         .catch(err => res.status(422).json(err));
     }
