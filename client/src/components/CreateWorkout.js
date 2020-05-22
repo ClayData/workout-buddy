@@ -7,7 +7,7 @@ import UserContext from '../utils/UserContext';
 function CreateWorkout(props) {
     const [formObject, setFormObject] = useState({});
     const [exerciseList, setExerciseList] = useState([]);
-    const [workoutName, setWorkoutName] = useState();
+    const [workoutName, setWorkoutName] = useState("");
     const { user } = useContext(UserContext)
 
     const handleInputChange = (event) => {
@@ -30,8 +30,9 @@ function CreateWorkout(props) {
         })
     }
 
-    const clearAll = (res) => {
-        //clear form
+    const clearAll = () => {
+        setExerciseList([]);
+        setWorkoutName("");
         props.SetWorkoutAdded(props.workoutAdded + 1);
     }
 
@@ -42,7 +43,7 @@ function CreateWorkout(props) {
             exercises: exerciseList,
             user: user.userName
         })
-        .then((res) => clearAll(res));
+        .then((res) => clearAll());
     }
     
     return(
