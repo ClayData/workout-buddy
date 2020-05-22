@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { List } from '@material-ui/core';
+import { List, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import SavedWorkoutItem from "./SavedWorkoutItem";
 import API from '../utils/API';
@@ -32,11 +32,13 @@ function SavedListContainer(props) {
     }, [props.workoutAdded])
 
     return(
-        <List dense={dense}>
-            {workouts.map((workout, i) => {
-                return <SavedWorkoutItem workout={workout} key={i} />
-            })}
-        </List>
+        
+            <List dense={dense}>
+                {workouts.map((workout, i) => {
+                    return <SavedWorkoutItem workout={workout} key={i} />
+                })}
+            </List>
+       
     )
 }
 
