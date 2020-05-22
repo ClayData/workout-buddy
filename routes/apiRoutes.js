@@ -8,8 +8,11 @@ router.route("/api/workouts")
 router.route("/api/workouts/:user")
     .get(workoutController.getUserWorkouts)
 
-router.route("/api/workouts/completed")
+router.route("/api/workouts/completed/:user")
     .get(workoutController.getCompletedWorkouts)
+
+router.route("/api/workout/completed/:id")
+    .put(workoutController.setCompletedWorkout)
     
 router.route("/api/workout/:id")
     .delete(workoutController.deleteWorkout)

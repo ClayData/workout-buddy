@@ -46,7 +46,9 @@ function Timer(props) {
             
             if(totalTime === 0){
                 SetCompleted(true);
-                //API.setCompleted()
+
+                //Mark workout as completed back in DB
+                API.setCompleted(props.id);
                 clearInterval(timeInterval)
             }
             else if(currentTime === 0) {
