@@ -30,9 +30,9 @@ function CreateWorkout(props) {
         })
     }
 
-    const clearAll = () => {
+    const clearAll = (res) => {
         //clear form
-        props.setNumSaved(props.numSaved + 1);
+        props.SetWorkoutAdded(props.workoutAdded + 1);
     }
 
     const formSubmit = (event) => {
@@ -42,7 +42,7 @@ function CreateWorkout(props) {
             exercises: exerciseList,
             user: user.userName
         })
-        .then(clearAll());
+        .then((res) => clearAll(res));
     }
     
     return(
