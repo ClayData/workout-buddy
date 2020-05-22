@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import UserContext  from '../../utils/UserContext';
 import API from '../../utils/API';
-
+import Image from '../../assets/deadlift-guy.jpg'
 
 const useStyles = makeStyles({
     root:{
@@ -16,10 +16,18 @@ const useStyles = makeStyles({
 
     },
     image:{
-
+        backgroundImage: `url(${Image})`,
+        height: '92vh',
+        background: 'linear-gradient(to left bottom, rgb(36,34,195,0.8), rgb(0,3,5,0.8))'
     },
     header:{
         fontSize: "2.5rem",
+        marginTop: "1.5rem"
+    },
+    headerContainer:{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 })
 
@@ -50,15 +58,19 @@ function SignIn() {
     return(
             <Grid container className={classes.root}>
                 <Grid item xs className={classes.formHolder}>
-                    <Typography className={classes.header}>
-                        Log-In / Sign-Up
-                    </Typography>
+                    <Grid item className={classes.headerContainer}>
+                        <Typography className={classes.header}>
+                            Log-In / Sign-Up
+                        </Typography>
+                    </Grid>
                     <LogInForm
                     onSubmit={onSubmit}
                     />
                 </Grid>
                 <Grid item xs>
-                    <Paper className={classes.image}></Paper>
+                    <Paper className={classes.image} elevation={2}>
+                        
+                    </Paper>
                 </Grid>
                 
             </Grid>
