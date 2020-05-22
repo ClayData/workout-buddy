@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SavedListContainer() {
+function SavedListContainer(props) {
     const [dense, setDense] = React.useState(false);
     const [workouts, setWorkouts] = useState([]);
 
@@ -29,7 +29,7 @@ function SavedListContainer() {
         API.getWorkouts(user.userName).then((results) => {
             setWorkouts(results.data);
         });
-    }, [])
+    }, [props.workoutAdded])
 
     return(
         <List dense={dense}>
