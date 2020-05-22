@@ -4,7 +4,7 @@ import { Grid, TextField, List, Button } from '@material-ui/core';
 import API from '../utils/API';
 import UserContext from '../utils/UserContext';
 
-function CreateWorkout() {
+function CreateWorkout(props) {
     const [formObject, setFormObject] = useState({});
     const [exerciseList, setExerciseList] = useState([]);
     const [workoutName, setWorkoutName] = useState();
@@ -30,13 +30,19 @@ function CreateWorkout() {
         })
     }
 
+    const clearAll = () => {
+        //clear form
+        props.setNumSaved(props.numSaved + 1);
+    }
+
     const formSubmit = (event) => {
         event.preventDefault();
         API.saveWorkout({
             title: workoutName,
             exercises: exerciseList,
             user: user.userName
-        });
+        })
+        .then(clearAll());
     }
     
     return(

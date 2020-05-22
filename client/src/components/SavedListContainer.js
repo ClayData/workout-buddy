@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { List } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import SavedWorkoutItem from "./SavedWorkoutItem";
 import API from '../utils/API';
+import UserContext from '../utils/UserContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,13 +19,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SavedListContainer() {
-    const classes = useStyles();
     const [dense, setDense] = React.useState(false);
-
     const [workouts, setWorkouts] = useState([]);
 
+    const { user } = useContext(UserContext);
+    const classes = useStyles();
+
     useEffect(() => {
-        API.getWorkouts().then((results) => {
+        API.getWorkouts(user.userName).then((results) => {
             setWorkouts(results.data);
         });
     }, [])

@@ -1,0 +1,17 @@
+.exerciseTime, .exerciseName{
+    padding-left: 20%;
+    font-weight: 600;
+}
+
+.exerciseName {
+    color: darkgreen;
+    font-size: 4vw;
+}
+
+.runWorkout {
+    margin-left: 2%;
+}
+
+.timers {
+    text-align: center;
+}
