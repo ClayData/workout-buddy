@@ -26,6 +26,30 @@ function NavBar() {
                     Workout Buddy
                 </Typography>
                 <Typography variant="h6" className={classes.title}>
+                    
+                </Typography>
+                <Typography variant="h6" className={classes.title}>
+                    
+                </Typography>
+                <Typography variant="h6" className={classes.title}>
+                    
+                </Typography>
+                <Typography variant="h6" className={classes.title}>
+                    
+                </Typography>
+                <Typography variant="h6" className={classes.title}>
+                    
+                </Typography>
+                <Typography variant="h6" className={classes.title}>
+                    
+                </Typography>
+                <Typography variant="h6" className={classes.title}>
+                    
+                </Typography>
+                <Typography variant="h6" className={classes.title}>
+                    
+                </Typography>
+                <Typography variant="h6" className={classes.title}>
                     {user.userName}
                 </Typography>
                 </Toolbar>
