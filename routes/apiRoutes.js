@@ -3,13 +3,15 @@ const workoutController = require("../controllers/workoutController");
 const passport = require("passport");
 
 router.route("/api/workouts")
-    .get(workoutController.getUserWorkouts)
     .post(workoutController.createWorkout)
+
+router.route("/api/workouts/:user")
+    .get(workoutController.getUserWorkouts)
 
 router.route("/api/workouts/completed")
     .get(workoutController.getCompletedWorkouts)
     
-router.route("/api/workouts/:id")
+router.route("/api/workout/:id")
     .delete(workoutController.deleteWorkout)
     .get(workoutController.getWorkoutById)
 

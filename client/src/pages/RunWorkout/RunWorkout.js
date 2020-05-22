@@ -1,60 +1,75 @@
 import React, { useState, useEffect } from 'react';
-import { Typography } from '@material-ui/core';
-import API from '../../utils/API';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import { useParams } from "react-router-dom";
+import Timer from '../../components/Timer';
+import RunExerciseList from '../../components/RunExerciseList';
+import API from '../../utils/API';
+import './RunWorkout.css';
+
+const useStyles = makeStyles((theme) => ({
+    table: {
+        minWidth: 200,
+    },
+    root: {
+        flexGrow: 1,
+      },
+    paper: {
+        height: 140,
+        width: 100,
+    },
+    control: {
+        padding: theme.spacing(2),
+    },
+}));
 
 function RunWorkout() {
-    const [bigTime, SetBigTime] = useState();
-    const [lilTime, SetLilTime] = useState();
+    const [workoutIndex, SetWorkoutIndex] = useState(0);
+    const [times, SetTimes] = useState([]);
+    const [workoutTitle, SetWorkoutTitle] = useState("");
+    const [exercises, SetExercises] = useState([]);
+    const [runWorkout, SetRunWorkout] = useState(false);
 
-    let times = []
-    let totalTime;
-    let currentTime;
-    let index = 0;
-
-    function runTimer(){
-        const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        totalTime = times.reduce(reducer)
-        currentTime = times[index];
-
-        let timeInterval = setInterval(function() {
-            totalTime--;
-            currentTime--;
-            console.log(currentTime);
-            
-            if(totalTime === 0){
-                clearInterval(timeInterval)
-            }
-            else if(currentTime <= 0) {
-                console.log("jsdhfkjdsh")
-                index ++;
-                currentTime = times[index]
-            }
-
-            SetLilTime(currentTime);
-            SetBigTime(totalTime);
-        }, 1000)
+    function handleClick(event) {
+        if(runWorkout === false) {
+            SetRunWorkout(true);
+            //event.target.value = "Stop Workout"
+        }
+        else {
+            SetRunWorkout(false);
+            //event.target.value = "Start Workout"
+        }
     }
 
     const {id} = useParams();
 
     useEffect(() => {
         API.getWorkout(id).then((res) => {
-            times = res.data[0].exercises.map((exercise) => {
+            SetTimes(res.data[0].exercises.map((exercise) => {
                 return exercise.duration
-            });
+            }));
+            SetExercises(res.data[0].exercises.map((exercise) => {
+                return exercise
+            }));
+            SetWorkoutTitle(res.data[0].title);
         })
-    }, [])
+    }, []);
 
-    return(
-        <div>
-            <Typography>
-                {lilTime}
-            </Typography>
-            <Typography>
-                {bigTime}
-            </Typography>
-            <button onClick={runTimer}>Start</button>
+    const classes = useStyles();
+
+    return (
+        <div className="runWorkout">
+            <br/>
+            <h2>{workoutTitle}</h2>
+            <Grid container justify="center" className={classes.root} spacing={1}>
+                <RunExerciseList exercises={exercises} index={workoutIndex} />
+                <Timer times={times} index={workoutIndex} title={workoutTitle} SetIndex={SetWorkoutIndex} currentExercise={exercises[workoutIndex] ? exercises[workoutIndex].exercise : ""} run={runWorkout} />
+                <Grid item xs={2}>
+
+                </Grid>
+            </Grid>
+            <Button color="secondary" size="large" variant="contained" onClick={handleClick}>Start Workout</Button>
         </div>
     )
 }
