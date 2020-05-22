@@ -16,7 +16,7 @@ function App() {
       <UserContext.Provider value={{ user, setUser }}>
         <div className="App">
           <NavBar />
-            <Route exact path="/" component={Workouts} />
+            <Route exact path="/" component={SignIn} />
             <Route exact path="/workouts" component={Workouts} />
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/runworkout/:id" component={RunWorkout} />
