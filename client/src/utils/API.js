@@ -8,7 +8,13 @@ export default {
         return axios.get(`/api/workouts/${user}`);
     },
     getCompleted: function(user) {
-        return axios.get("/api/workouts/completed");
+        return axios.get(`/api/workouts/completed/${user}`);
+    },
+    setCompleted: function(id) {
+        return axios.put(`/api/workout/completed/${id}`);
+    },
+    incrementCompleted: function(id, timesCompleted) {
+        return axios.put(`/api/workout/increment/${id}/${timesCompleted}`);
     },
     getWorkout: function(id){
         return axios.get(`/api/workout/${id}`);

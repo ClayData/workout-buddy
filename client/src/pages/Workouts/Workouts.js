@@ -25,7 +25,6 @@ const Workouts = () => {
             <Grid container direction="row" justify="space-around" alignItems="baseline">
                 <Grid item >
                     <Paper variant="outlined" className={classes.paper}>
-                        <h2>Completed Workouts</h2>
                         <CompletedListContainer />    
                     </Paper>
                 </Grid>       
@@ -36,7 +35,6 @@ const Workouts = () => {
                 </Grid>
                 <Grid item >
                     <Paper variant="outlined" className={classes.paper}>
-                        <h2>Saved Workouts</h2>
                         <SavedListContainer workoutAdded={workoutAdded} />
                     </Paper>
                 </Grid>    
