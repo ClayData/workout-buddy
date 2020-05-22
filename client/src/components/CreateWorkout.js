@@ -3,12 +3,23 @@ import WorkoutListItem from './WorkoutListItem';
 import { Grid, TextField, List, Button } from '@material-ui/core';
 import API from '../utils/API';
 import UserContext from '../utils/UserContext';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+    textForm: {
+        marginBottom: '1.2rem'
+    },
+    subBtn: {
+        marginBottom: '1.2rem'
+    }
+})
 
 function CreateWorkout(props) {
     const [formObject, setFormObject] = useState({});
     const [exerciseList, setExerciseList] = useState([]);
     const [workoutName, setWorkoutName] = useState("");
     const { user } = useContext(UserContext)
+    const classes = useStyles();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -55,21 +66,25 @@ function CreateWorkout(props) {
                         <TextField
                         label="Workout Name"
                         onChange={e => setWorkoutName(e.target.value)}
+                        className={classes.textForm}
                         />
                     </Grid>
                     <form>
-                        <Grid container direction="row">
+                        <Grid container direction="column">
                             <TextField
                             name="exercise"
                             id="exercise"
                             onChange={handleInputChange}
                             value={formObject.exercise}
+                            className={classes.textForm}
+                            label="Exercise Name"
                             />
                             <TextField
                             name="duration"
                             type="Number"
-                            className="number"
+                            className={classes.textForm}
                             id="time"
+                            label="Seconds"
                             onChange={handleInputChange}
                             value={formObject.duration}
                             />
@@ -79,9 +94,18 @@ function CreateWorkout(props) {
                             onClick={addExercise} 
                             // disabled={!(formObject.exercise && formObject.duration)}
                             type="submit"
+                            className={classes.subBtn}
                             >Add Exercise</Button>
                         </Grid>
                     </form>
+                        <Button
+                            variant="contained" 
+                            color="primary" 
+                            onClick={formSubmit} 
+                            type="submit"
+                            >
+                                Save Workout
+                        </Button>
                     {exerciseList.length ? (
                     <List>
                         {exerciseList.map((exercise) => {
@@ -97,14 +121,6 @@ function CreateWorkout(props) {
                             <h3>No Exercises Added Yet</h3>
                         )
                         }
-                        <Button
-                            variant="contained" 
-                            color="primary" 
-                            onClick={formSubmit} 
-                            type="submit"
-                            >
-                                Save Workout
-                        </Button>
                 </Grid>
             </Grid>
         </div>
