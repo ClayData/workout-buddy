@@ -21,6 +21,10 @@ router.route("/api/workout/:id")
     .delete(workoutController.deleteWorkout)
     .get(workoutController.getWorkoutById)
 
+router.route("/api/users/:user/stats")
+    .get(workoutController.getUserStats)
+    .put(workoutController.writeToStats)
+
 router.get("/health", function(req, res) {
     res.send("Hello from the express server!");
 })

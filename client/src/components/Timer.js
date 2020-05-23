@@ -52,6 +52,11 @@ function Timer(props) {
                     API.incrementCompleted(props.id, res.data.timesCompleted + 1);
                 });
 
+                //Write workout into stats
+                API.getWorkout(props.id).then((workout) => {
+                    API.writeToStats(sessionStorage.getItem("currentUser"), [workout.data[0].exercises]);
+                })
+
                 clearInterval(timeInterval)
             }
             else if(currentTime === 0) {

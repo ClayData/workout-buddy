@@ -42,9 +42,9 @@ function SignIn() {
         .then(res => {
             console.log(res);
             if(res.status === 200){
-            sessionStorage.setItem("currentUser", data.email)
-            history.push("/workouts")
-        }
+                sessionStorage.setItem("currentUser", data.email)
+                history.push("/workouts")
+            }
         })
         .catch(err => {
             console.log(err);
