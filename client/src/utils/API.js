@@ -27,6 +27,12 @@ export default {
     },
     deleteWorkout: function(id){
         return axios.delete(`/api/workout/${id}`)
+    },
+    getUserData: function(user) {
+        return axios.get(`/api/users/${user}/stats`)
+    },
+    writeToStats: function(user, workout) {
+        return axios.put(`/api/users/${user}/stats`, {data: workout})
     }
 
 }

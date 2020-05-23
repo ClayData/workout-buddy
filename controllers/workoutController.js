@@ -1,4 +1,5 @@
 const WorkoutModel = require("../models/exerciseModel");
+const StatsModel = require("../models/statsModel");
 
 module.exports = {
     createWorkout: function(req, res) {
@@ -14,6 +15,16 @@ module.exports = {
     getUserWorkouts: function(req, res) {
         WorkoutModel.find({user: req.params.user})
         .then((workouts) => res.json(workouts))
+        .catch(err => res.status(422).json(err));
+    },
+    getUserStats: function(req, res) {
+        StatsModel.find({user: req.params.user})
+        .then((data) => res.json(data))
+        .catch(err => res.status(422).json(err));
+    },
+    writeToStats: function(req, res) {
+        StatsModel.findOneAndUpdate({user: req.params.user}, {$push: {completedWorkouts: req.body.data}})
+        .then((response) => res.json(response))
         .catch(err => res.status(422).json(err));
     },
     getWorkoutById: function(req, res) {
