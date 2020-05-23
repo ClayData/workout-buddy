@@ -22,6 +22,7 @@ const useStyles = makeStyles({
     },
     header:{
         fontSize: "2.5rem",
+        fontWeight: "bold",
         marginTop: "1.5rem"
     },
     headerContainer:{
@@ -34,7 +35,7 @@ const useStyles = makeStyles({
 function SignIn() {
     const classes = useStyles()
     const history = useHistory();
-    const {user, setUser} = useContext(UserContext)
+    
       
     const onSubmit = data => {
         console.log(data)
@@ -42,12 +43,9 @@ function SignIn() {
         .then(res => {
             console.log(res);
             if(res.status === 200){
-            setUser({
-                userName: data.email})
-                
+            sessionStorage.setItem("currentUser", data.email)
             history.push("/workouts")
         }
-        
         })
         .catch(err => {
             console.log(err);
