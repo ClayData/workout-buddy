@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
         margin: theme.spacing(4, 0, 2),
     },
+    
 }));
 
 function SavedListContainer(props) {
@@ -32,7 +33,7 @@ function SavedListContainer(props) {
 
     return(
         
-            <List dense={dense}>
+            <List dense={dense} >
                 <h2>Saved Workouts</h2> <br />
                 {workouts.map((workout, i) => {
                     return <SavedWorkoutItem workout={workout} key={i} />

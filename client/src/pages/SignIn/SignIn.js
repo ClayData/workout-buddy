@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import LogInForm from '../../components/LogInForm';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
-import UserContext  from '../../utils/UserContext';
 import API from '../../utils/API';
 import Image from '../../assets/deadlift-guy.jpg'
 

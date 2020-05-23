@@ -38,7 +38,7 @@ const Workouts = () => {
                 </Grid>
                 <Grid item >
                     <Paper variant="outlined" className={classes.paper}>
-                        <SavedListContainer workoutAdded={workoutAdded} user={user}/>
+                        <SavedListContainer workoutAdded={workoutAdded} SetWorkoutAdded={SetWorkoutAdded} user={user}/>
                     </Paper>
                 </Grid>    
             </Grid>
