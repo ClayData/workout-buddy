@@ -36,7 +36,7 @@ function SavedListContainer(props) {
             <List dense={dense} >
                 <h2>Saved Workouts</h2> <br />
                 {workouts.map((workout, i) => {
-                    return <SavedWorkoutItem workout={workout} key={i} />
+                    return <SavedWorkoutItem workout={workout} key={i} setWorkoutAdded={props.setWorkoutAdded}/>
                 })}
             </List>
        
