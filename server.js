@@ -28,7 +28,7 @@ app.use(passport.session());
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutDB").catch((err) => {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:122#ERty@ds157742.mlab.com:57742/heroku_v6qn2zpv").catch((err) => {
     console.log(err);
 })
 
