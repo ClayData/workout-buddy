@@ -24,6 +24,9 @@ export default {
     },
     signOut: function(){
         return axios.get('/logout')
+    },
+    deleteWorkout: function(id){
+        return axios.delete(`/api/workout/${id}`)
     }
 
 }

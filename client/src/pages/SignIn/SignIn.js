@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import LogInForm from '../../components/LogInForm';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
-import UserContext  from '../../utils/UserContext';
 import API from '../../utils/API';
 import Image from '../../assets/deadlift-guy.jpg'
 
@@ -22,6 +21,7 @@ const useStyles = makeStyles({
     },
     header:{
         fontSize: "2.5rem",
+        fontWeight: "bold",
         marginTop: "1.5rem"
     },
     headerContainer:{
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 function SignIn() {
     const classes = useStyles()
     const history = useHistory();
-    const {user, setUser} = useContext(UserContext)
+    
       
     const onSubmit = data => {
         console.log(data)
@@ -42,12 +42,9 @@ function SignIn() {
         .then(res => {
             console.log(res);
             if(res.status === 200){
-            setUser({
-                userName: data.email})
-                
+            sessionStorage.setItem("currentUser", data.email)
             history.push("/workouts")
         }
-        
         })
         .catch(err => {
             console.log(err);

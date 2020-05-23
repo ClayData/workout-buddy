@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import WorkoutListItem from './WorkoutListItem';
 import { Grid, TextField, List, Button } from '@material-ui/core';
 import API from '../utils/API';
-import UserContext from '../utils/UserContext';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -18,7 +17,6 @@ function CreateWorkout(props) {
     const [formObject, setFormObject] = useState({});
     const [exerciseList, setExerciseList] = useState([]);
     const [workoutName, setWorkoutName] = useState("");
-    const { user } = useContext(UserContext)
     const classes = useStyles();
 
     const handleInputChange = (event) => {
@@ -52,7 +50,7 @@ function CreateWorkout(props) {
         API.saveWorkout({
             title: workoutName,
             exercises: exerciseList,
-            user: user.userName
+            user: props.user
         })
         .then((res) => clearAll());
     }

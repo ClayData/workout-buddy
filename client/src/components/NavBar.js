@@ -1,8 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import MenuButton from './MenuButton';
-import UserContext from '../utils/UserContext';
+// import UserContext from '../utils/UserContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
     const classes = useStyles();
-    const { user } = useContext(UserContext);
+    // const { user } = useContext(UserContext);
+    const user = sessionStorage.getItem("currentUser")
 
     return(
         <div className={classes.root}>
@@ -50,7 +51,7 @@ function NavBar() {
                     
                 </Typography>
                 <Typography variant="h6" className={classes.title}>
-                    {user.userName}
+                    {user}
                 </Typography>
                 </Toolbar>
             </AppBar>
