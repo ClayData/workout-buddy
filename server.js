@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === "production") {
 // }
 
 app.use(session({ secret: "spicy meatball",
-                  resave: true,
+                  resave: false,
                   saveUninitialized: true      
 }))
 app.use(passport.initialize());

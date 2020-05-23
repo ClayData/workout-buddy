@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { List } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CompletedListItem from "./CompletedListItem";
 import API from '../utils/API';
-import UserContext from '../utils/UserContext';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,21 +18,21 @@ const useStyles = makeStyles((theme) => ({
         },
     }));
 
-function CompletedListContainer() {
+function CompletedListContainer(props) {
     const [dense, setDense] = React.useState(false);
     const [workouts, setWorkouts] = useState([]);
     
-    const { user } = useContext(UserContext);
     const classes = useStyles();
 
     useEffect(() => {
-        API.getCompleted(user.userName).then((results) => {
+        API.getCompleted(props.user).then((results) => {
             setWorkouts(results.data);
         });
     }, [])
 
     return(
         <List dense={dense}>
+            <h2>Favorite Workouts</h2> <br />
             {workouts.map((workout, i) => {
                 return <CompletedListItem workout={workout} key={i} />
             })}

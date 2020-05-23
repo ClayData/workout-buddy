@@ -17,19 +17,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CompletedListItem(props) {
-  const classes = useStyles();
-  return (
-    <div className={classes.demo}>
-      <ListItem>
-        <ListItemIcon>
-          <FitnessCenterIcon />
-        </ListItemIcon>
-        <ListItemText
-          primary={props.workout.title}
-        />
-      </ListItem>
-    </div>
-  )
+    const classes = useStyles();
+    return (
+        <div className={classes.demo}>
+            <ListItem>
+            <ListItemIcon>
+                {props.workout.timesCompleted}
+            </ListItemIcon>
+            <ListItemIcon>
+                <FitnessCenterIcon />
+            </ListItemIcon>
+            <ListItemText
+                primary={props.workout.title}
+            />
+            </ListItem>
+        </div>
+    )
 }
 
 export default CompletedListItem;
