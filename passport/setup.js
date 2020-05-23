@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/userModel");
+const StatsModel = require("../models/statsModel");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
@@ -18,9 +19,11 @@ passport.use(
         // Check for user
         User.findOne({ email: email })
             .then(user => {
-                // Create a new user
                 if (!user) {
+                    // Create a new user
                     const newUser = new User ({ email, password });
+                    StatsModel.create({user: email});
+                    
                     // Hashes the password and the saves it to db
                     bcrypt.genSalt(10, (err, salt) => {
                         bcrypt.hash(newUser.password, salt, (err, hash) => {
