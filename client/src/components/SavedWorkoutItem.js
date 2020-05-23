@@ -41,6 +41,7 @@ function SavedWorkoutItem(props) {
                         <DeleteForeverIcon edge="end" aria-label="delete" onClick={() => {
                                 if(window.confirm(`Are you sure you want to delete ${props.workout.title}?`)){
                                 API.deleteWorkout(props.workout._id)
+                                props.SetWorkoutAdded(props.workoutAdded + 1);
                                 }
                             }
                         }/>
