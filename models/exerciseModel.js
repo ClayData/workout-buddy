@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const workoutSchema = new mongoose.Schema({
     title: { type: String, required: true },
-    user: { type: String, required: true },
+    user: { type: String },
     exercises: [{ exercise: String, duration: Number }],
     completed: {type: Boolean, default: false},
     timesCompleted: { type: Number, default: 0 }
