@@ -15,9 +15,7 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
-// else{
-//     app.use(express.static("public"));
-// }
+
 
 app.use(session({ secret: "spicy meatball",
                   resave: false,
