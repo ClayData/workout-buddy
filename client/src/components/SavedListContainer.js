@@ -36,7 +36,14 @@ function SavedListContainer(props) {
             <List dense={dense} >
                 <h2>Saved Workouts</h2> <br />
                 {workouts.map((workout, i) => {
-                    return <SavedWorkoutItem workout={workout} key={i} setWorkoutAdded={props.setWorkoutAdded}/>
+                    return <SavedWorkoutItem workout={workout} key={i} onClick={() => 
+                        {
+                            if(window.confirm(`Are you sure you want to delete ${workout.title}?`)){
+                            API.deleteWorkout(workout._id)
+                            props.SetWorkoutAdded(props.workoutAdded - 1)
+                            }
+                        }
+                    }/>
                 })}
             </List>
        

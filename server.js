@@ -8,7 +8,7 @@ const passport = require("./passport/setup");
 
 const PORT = process.env.PORT || 3001;
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://user:password123@ds161960.mlab.com:61960/heroku_qp34gq5x", { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user:password123@ds161960.mlab.com:61960/heroku_qp34gq5x")
 
 app.use(express.urlencoded({ extended:true }));
 app.use(express.json());
@@ -26,10 +26,6 @@ app.use(session({ secret: "spicy meatball",
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
 
 app.use(routes);
 
