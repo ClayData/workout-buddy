@@ -19,12 +19,17 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
+
 app.use(session({ secret: "spicy meatball",
                   resave: false,
                   saveUninitialized: true      
 }))
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 app.use(routes);
 
