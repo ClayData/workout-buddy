@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Timer from '../../components/Timer';
 import RunExerciseList from '../../components/RunExerciseList';
 import API from '../../utils/API';

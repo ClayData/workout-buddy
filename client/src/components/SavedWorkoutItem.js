@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link, useLocation } from "react-router-dom";
-import API from '../utils/API';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,8 +30,11 @@ function SavedWorkoutItem(props) {
                     <FitnessCenterIcon />
                 </ListItemIcon>
 
-                <ListItemText>
-                <Link to={`/runworkout/${props.workout._id}`} className={location.pathname === `/runworkout/${props.workout._id}` ? "nav-link active" : "nav-link"}>
+                <ListItemText className={classes.text} >
+                <Link to={`/runworkout/${props.workout._id}`} 
+                className={location.pathname === `/runworkout/${props.workout._id}` ? "nav-link active" : "nav-link"}
+                style={{"color": "black", "textDecoration": "none"}}
+                >
                     {props.workout.title}
                 </Link>
 
@@ -41,6 +44,7 @@ function SavedWorkoutItem(props) {
                         <DeleteForeverIcon edge="end" aria-label="delete"/>
                     </IconButton>
                 </ListItemSecondaryAction>
+                
             </ListItem>
     </div>
   )

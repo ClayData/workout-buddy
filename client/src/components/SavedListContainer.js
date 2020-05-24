@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { List } from '@material-ui/core';
+import { List, Divider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import SavedWorkoutItem from "./SavedWorkoutItem";
 import API from '../utils/API';
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SavedListContainer(props) {
-    const [dense, setDense] = React.useState(false);
+    const [dense] = React.useState(false);
     const [workouts, setWorkouts] = useState([]);
 
     const classes = useStyles();
@@ -36,7 +36,9 @@ function SavedListContainer(props) {
             <List dense={dense} >
                 <h2>Saved Workouts</h2> <br />
                 {workouts.map((workout, i) => {
-                    return <SavedWorkoutItem workout={workout} key={i} onClick={() => 
+                    return (
+                        <div>
+                    <SavedWorkoutItem workout={workout} key={i} onClick={() => 
                         {
                             if(window.confirm(`Are you sure you want to delete ${workout.title}?`)){
                             API.deleteWorkout(workout._id)
@@ -44,7 +46,11 @@ function SavedListContainer(props) {
                             }
                         }
                     }/>
-                })}
+                    <Divider />
+                    </div>
+                    )
+                }
+                )}
             </List>
        
     )

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 function WorkoutListItem(props) {
   const classes = useStyles();
-  const [secondary, setSecondary] = React.useState(false);
+  const [secondary ] = React.useState(false);
   
   return (
     <div className={classes.demo}>
