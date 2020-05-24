@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Timer from '../../components/Timer';
 import RunExerciseList from '../../components/RunExerciseList';
 import API from '../../utils/API';
@@ -22,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     control: {
         padding: theme.spacing(2),
     },
+    
 }));
 
 function RunWorkout() {
@@ -30,6 +30,7 @@ function RunWorkout() {
     const [workoutTitle, SetWorkoutTitle] = useState("");
     const [exercises, SetExercises] = useState([]);
     const [runWorkout, SetRunWorkout] = useState(false);
+   
 
     function handleClick(event) {
         if(runWorkout === false) {
@@ -63,13 +64,12 @@ function RunWorkout() {
             <br/>
             <h2>{workoutTitle}</h2>
             <Grid container justify="center" className={classes.root} spacing={1}>
-                <RunExerciseList exercises={exercises} index={workoutIndex} />
+                <RunExerciseList exercises={exercises} index={workoutIndex} handleClick={handleClick}/>
                 <Timer times={times} index={workoutIndex} title={workoutTitle} id={id} SetIndex={SetWorkoutIndex} currentExercise={exercises[workoutIndex] ? exercises[workoutIndex].exercise : ""} run={runWorkout} />
                 <Grid item xs={2}>
 
                 </Grid>
             </Grid>
-            <Button color="secondary" size="large" variant="contained" onClick={handleClick}>Start Workout</Button>
         </div>
     )
 }
