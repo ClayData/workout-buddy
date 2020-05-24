@@ -26,9 +26,7 @@ app.use(passport.session());
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:122#ERty@ds161960.mlab.com:61960/heroku_qp34gq5x").catch((err) => {
-    console.log(err);
-})
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user:password123@ds161960.mlab.com:61960/heroku_qp34gq5x")
 
 app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
