@@ -5,8 +5,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link, useLocation } from "react-router-dom";
 import API from "../utils/API"
+import { PromiseProvider } from 'mongoose';
 
-export default function MenuButton() {
+export default function MenuButton(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
   
     const location = useLocation();
@@ -15,10 +16,15 @@ export default function MenuButton() {
       setAnchorEl(event.currentTarget);
     };
   
-    const handleClose = () => {
-      setAnchorEl(null);
-      API.signOut()
-    };
+    // const handleClose = () => {
+    //   setAnchorEl(null);
+    //   API.signOut()
+    // };
+
+    const signOut = (event) => {
+        sessionStorage.setItem("currentUser", "");
+        props.SetUser("currentUser", "");
+    }
 
     return(
         <div>
@@ -30,19 +36,19 @@ export default function MenuButton() {
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
-            onClose={handleClose}
+            onClose={() => {setAnchorEl(null);}}
             >
-            <MenuItem onClick={handleClose}>
+            <MenuItem>
                 <Link to="/workouts" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
                     Workouts
                 </Link>
             </MenuItem>
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={signOut}>
                 <Link to="/signin" className={location.pathname === "/signin" ? "nav-link active" : "nav-link"}>
                     Sign Out
                 </Link>
             </MenuItem>
-            <MenuItem onClick={handleClose}>
+            <MenuItem>
                 <Link to="/runworkout" className={location.pathname === "/runworkout" ? "nav-link active" : "nav-link"}>
                     Run Workout
                 </Link>

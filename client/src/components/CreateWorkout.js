@@ -106,11 +106,9 @@ function CreateWorkout(props) {
                         </Button>
                     {exerciseList.length ? (
                     <List>
-                        {exerciseList.map((exercise) => {
+                        {exerciseList.map((exercise, i) => {
                             return(
-                                <WorkoutListItem
-                                text={exercise.exercise + " " + exercise.duration}
-                                />
+                                <WorkoutListItem text={exercise.exercise + " " + exercise.duration} key={i} />
                             )
                             }
                         )}
