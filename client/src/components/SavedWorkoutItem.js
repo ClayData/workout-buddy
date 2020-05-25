@@ -27,7 +27,12 @@ function SavedWorkoutItem(props) {
     <div>
             <ListItem className={classes.demo} onClick={() => {}} data-id={props.workout._id} button>
                 <ListItemIcon>
-                    <FitnessCenterIcon />
+                    <Link to={`/runworkout/${props.workout._id}`} 
+                    className={location.pathname === `/runworkout/${props.workout._id}` ? "nav-link active" : "nav-link"}
+                    style={{"color": "black", "textDecoration": "none"}}
+                    >
+                        <FitnessCenterIcon />
+                    </Link>
                 </ListItemIcon>
 
                 <ListItemText className={classes.text} >
@@ -39,11 +44,9 @@ function SavedWorkoutItem(props) {
                 </Link>
 
                 </ListItemText>
-                <ListItemSecondaryAction onClick={props.onClick}>
-                    <IconButton>
-                        <DeleteForeverIcon edge="end" aria-label="delete"/>
-                    </IconButton>
-                </ListItemSecondaryAction>
+                <IconButton onClick={props.onClick}>
+                    <DeleteForeverIcon edge="end" aria-label="delete"/>
+                </IconButton>
                 
             </ListItem>
     </div>

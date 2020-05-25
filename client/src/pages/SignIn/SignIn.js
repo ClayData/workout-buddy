@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LogInForm from '../../components/LogInForm';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,10 +31,9 @@ const useStyles = makeStyles({
     }
 })
 
-function SignIn() {
+function SignIn(props) {
     const classes = useStyles()
-    const history = useHistory();
-    
+    const history = useHistory(); 
       
     const onSubmit = data => {
         console.log(data)
@@ -43,6 +42,7 @@ function SignIn() {
             console.log(res);
             if(res.status === 200){
                 sessionStorage.setItem("currentUser", data.email)
+                props.SetUser(data.email)
                 history.push("/workouts")
             }
         })
