@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import LogInForm from '../../components/LogInForm';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -32,14 +32,17 @@ const useStyles = makeStyles({
 })
 
 function SignIn(props) {
-    const classes = useStyles()
+    const [error, SetError] = useState(false);
+    const classes = useStyles();
     const history = useHistory(); 
+
+    useEffect (() => {
+        SetError(false);
+    }, [])
       
     const onSubmit = data => {
-        console.log(data)
         API.postUser(data)
         .then(res => {
-            console.log(res);
             if(res.status === 200){
                 sessionStorage.setItem("currentUser", data.email)
                 props.SetUser(data.email)
@@ -47,8 +50,8 @@ function SignIn(props) {
             }
         })
         .catch(err => {
+            SetError(true);
             console.log(err);
-            console.log(err.response);
         })
     }
 
@@ -60,9 +63,7 @@ function SignIn(props) {
                             Log-In / Sign-Up
                         </Typography>
                     </Grid>
-                    <LogInForm
-                    onSubmit={onSubmit}
-                    />
+                    <LogInForm onSubmit={onSubmit} loginError={error}/>
                 </Grid>
                 <Grid item xs>
                     <Paper className={classes.image} elevation={2}>

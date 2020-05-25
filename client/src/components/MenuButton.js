@@ -23,7 +23,7 @@ export default function MenuButton(props) {
 
     const signOut = (event) => {
         sessionStorage.setItem("currentUser", "");
-        props.SetUser("currentUser", "");
+        props.SetUser("");
     }
 
     return(
@@ -46,6 +46,11 @@ export default function MenuButton(props) {
             <MenuItem onClick={signOut}>
                 <Link to="/signin" className={location.pathname === "/signin" ? "nav-link active" : "nav-link"}>
                     Sign Out
+                </Link>
+            </MenuItem>
+            <MenuItem>
+                <Link to="/stats" className={location.pathname === "/stats" ? "nav-link active" : "nav-link"}>
+                    User Stats
                 </Link>
             </MenuItem>
             
