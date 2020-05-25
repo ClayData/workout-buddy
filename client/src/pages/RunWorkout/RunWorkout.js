@@ -43,6 +43,10 @@ function RunWorkout() {
         }
     }
 
+    function pauseTimer() {
+        
+    }
+
     const {id} = useParams();
 
     useEffect(() => {
@@ -64,7 +68,7 @@ function RunWorkout() {
             <br/>
             <h2>{workoutTitle}</h2>
             <Grid container justify="center" className={classes.root} spacing={1}>
-                <RunExerciseList exercises={exercises} index={workoutIndex} handleClick={handleClick}/>
+                <RunExerciseList exercises={exercises} index={workoutIndex} handleClick={handleClick} onClick={pauseTimer}/>
                 <Timer times={times} index={workoutIndex} title={workoutTitle} id={id} SetIndex={SetWorkoutIndex} currentExercise={exercises[workoutIndex] ? exercises[workoutIndex].exercise : ""} run={runWorkout} />
                 <Grid item xs={2}>
 

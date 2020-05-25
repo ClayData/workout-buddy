@@ -102,7 +102,7 @@ function RunExerciseList(props) {
                     <IconButton className={classes.btn} color="secondary" size="large" variant="contained" onClick={props.handleClick}>
                         <PlayCircleFilledWhiteIcon fontSize="large"></PlayCircleFilledWhiteIcon>
                     </IconButton>
-                    <IconButton className={classes.btn} color="secondary" size="large" variant="contained" >
+                    <IconButton className={classes.btn} color="secondary" size="large" variant="contained" onClick={props.onClick}>
                         <PauseCircleFilledIcon fontSize="large"></PauseCircleFilledIcon>
                     </IconButton>
                 </Grid>
