@@ -31,9 +31,7 @@ const useStyles = makeStyles({
     }
 })
 
-function SignIn() {
-    sessionStorage.setItem("currentUser", "");  
-    
+function SignIn(props) {
     const classes = useStyles()
     const history = useHistory(); 
       
@@ -44,6 +42,7 @@ function SignIn() {
             console.log(res);
             if(res.status === 200){
                 sessionStorage.setItem("currentUser", data.email)
+                props.SetUser(data.email)
                 history.push("/workouts")
             }
         })

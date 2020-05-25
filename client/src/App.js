@@ -14,10 +14,10 @@ function App() {
   return (
     <Router>
         <div className="App">
-          <NavBar user={user}/>
-          <Route exact path="/" component={SignIn} />
+          <NavBar user={user} SetUser={SetUser} />
+          <Route exact path="/" component={() => {return (<SignIn SetUser={SetUser} />)}} />
           <Route exact path="/workouts" component={Workouts} />
-          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signin" component={() => {return (<SignIn SetUser={SetUser} />)}} />
           <Route exact path="/runworkout/:id" component={RunWorkout} />
           <Route exact path="/stats" component={Stats} />
         </div>

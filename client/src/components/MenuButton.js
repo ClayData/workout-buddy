@@ -5,8 +5,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link, useLocation } from "react-router-dom";
 import API from "../utils/API"
+import { PromiseProvider } from 'mongoose';
 
-export default function MenuButton() {
+export default function MenuButton(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
   
     const location = useLocation();
@@ -22,6 +23,7 @@ export default function MenuButton() {
 
     const signOut = (event) => {
         sessionStorage.setItem("currentUser", "");
+        props.SetUser("currentUser", "");
     }
 
     return(
