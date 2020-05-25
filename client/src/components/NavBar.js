@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import MenuButton from './MenuButton';
@@ -49,7 +50,9 @@ function NavBar(props) {
               
           </Typography>
           <Typography variant="h6" className={classes.title}>
+            <Link to="/stats" style={{ textDecoration: 'none', color: 'white' }}>
               {props.user}
+            </Link>
           </Typography>
           </Toolbar>
         </AppBar>
