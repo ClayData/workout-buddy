@@ -37,14 +37,12 @@ function SavedWorkoutItem(props) {
 
                 </ListItemText>
                 <ListItemSecondaryAction>
-                    <IconButton>
                         <DeleteForeverIcon edge="end" aria-label="delete" onClick={() => {
                                 if(window.confirm(`Are you sure you want to delete ${props.workout.title}?`)){
-                                API.deleteWorkout(props.workout._id)
+                                    API.deleteWorkout(props.workout._id)
                                 }
                             }
                         }/>
-                    </IconButton>
                 </ListItemSecondaryAction>
             </ListItem>
     </div>

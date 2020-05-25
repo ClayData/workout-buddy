@@ -44,6 +44,8 @@ function Timer(props) {
             currentTime--;
             
             if(totalTime === 0){
+                index++;
+                props.SetIndex(index);
                 SetCompleted(true);
 
                 //Mark workout as completed back in DB and increment times completed

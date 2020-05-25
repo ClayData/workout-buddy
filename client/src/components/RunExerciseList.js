@@ -65,15 +65,19 @@ function RunExerciseList(props) {
                 </TableRow>
                 </TableHead>
                 <TableBody>
-                {props.exercises.map((exercise, i) => (
-                    <TableRow key={i} style={i === props.index ? {backgroundColor: "lightgreen"} : {backgroundColor: "white"}}>
-                        <TableCell> <FitnessCenterIcon/> </TableCell>
-                        <TableCell component="th" scope="row">
-                            {exercise.exercise}
-                        </TableCell>
-                        <TableCell align="left">{formatTime(exercise.duration)}</TableCell>
-                    </TableRow>
-                ))}
+                {props.exercises.map((exercise, i) => {
+                    if(i >= props.index) {
+                        return (
+                            <TableRow key={i} style={i === props.index ? {backgroundColor: "lightgreen"} : {backgroundColor: "white"}}>
+                                <TableCell> <FitnessCenterIcon/> </TableCell>
+                                <TableCell component="th" scope="row">
+                                    {exercise.exercise}
+                                </TableCell>
+                                <TableCell align="left">{formatTime(exercise.duration)}</TableCell>
+                            </TableRow>
+                        )
+                    }
+                })}
                 <TableRow key="total">
                     <TableCell></TableCell>
                     <TableCell component="th" scope="row">
