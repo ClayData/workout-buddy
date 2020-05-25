@@ -48,11 +48,6 @@ export default function MenuButton(props) {
                     Sign Out
                 </Link>
             </MenuItem>
-            <MenuItem>
-                <Link to="/runworkout" className={location.pathname === "/runworkout" ? "nav-link active" : "nav-link"}>
-                    Run Workout
-                </Link>
-            </MenuItem>
             
         </Menu>
     </div>
