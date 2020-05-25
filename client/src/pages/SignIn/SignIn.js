@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LogInForm from '../../components/LogInForm';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -32,9 +32,10 @@ const useStyles = makeStyles({
 })
 
 function SignIn() {
-    const classes = useStyles()
-    const history = useHistory();
+    sessionStorage.setItem("currentUser", "");  
     
+    const classes = useStyles()
+    const history = useHistory(); 
       
     const onSubmit = data => {
         console.log(data)
