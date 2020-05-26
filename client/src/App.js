@@ -48,7 +48,7 @@ function App() {
 
   useEffect(() => {
     SetUser(sessionStorage.getItem("currentUser"));
-  })
+  }, [])
   return (
     <ThemeProvider theme={themeConfig}>
       <Router>
