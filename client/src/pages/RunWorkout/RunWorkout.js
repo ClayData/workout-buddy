@@ -14,10 +14,12 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         flexGrow: 1,
+        fontFamily: 'Robot'
       },
     paper: {
         height: 140,
         width: 100,
+        
     },
     control: {
         padding: theme.spacing(2),
@@ -25,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
     workoutHolder:{
         height: '92vh',
         width: '100vw',
-       padding: '2rem'
+       padding: '2rem',
+       fontFamily: 'Roboto'
     }
 }));
 
@@ -35,7 +38,7 @@ function RunWorkout() {
     const [workoutTitle, SetWorkoutTitle] = useState("");
     const [exercises, SetExercises] = useState([]);
     const [runWorkout, SetRunWorkout] = useState(false);
-   
+    
 
     function handleClick(event) {
         if(runWorkout === false) {
@@ -48,7 +51,8 @@ function RunWorkout() {
         }
     }
 
-    function pauseTimer() {
+    function pauseTimer(event) {
+        SetRunWorkout(false);
         
     }
 
@@ -76,7 +80,13 @@ function RunWorkout() {
                 <Grid container justify="center" className={classes.root} spacing={1}>
                     
                         <RunExerciseList exercises={exercises} index={workoutIndex} handleClick={handleClick} onClick={pauseTimer}/>
-                        <Timer times={times} index={workoutIndex} title={workoutTitle} id={id} SetIndex={SetWorkoutIndex} currentExercise={exercises[workoutIndex] ? exercises[workoutIndex].exercise : ""} run={runWorkout} />
+                        <Timer 
+                        times={times} 
+                        index={workoutIndex} 
+                        title={workoutTitle} 
+                        id={id} 
+                        SetIndex={SetWorkoutIndex} 
+                        currentExercise={exercises[workoutIndex] ? exercises[workoutIndex].exercise : ""} run={runWorkout} />
                         <Grid item xs={2}>
                         </Grid>
                 </Grid>

@@ -12,6 +12,7 @@ const themeObject ={
     primary: { 
       main: '#053f5b' },
     secondary: { main: '#5e3c6f'},
+    warning: { main: '#f44336' },
     type: 'light',
   },
   typography: {

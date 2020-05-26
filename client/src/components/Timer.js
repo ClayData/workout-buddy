@@ -22,6 +22,10 @@ function formatTime(totalSeconds) {
     return minutes + ":" + seconds;
 }
 
+    let timeInterval
+    let index = 0;
+    let totalTime
+
 function Timer(props) {
     const [bigTime, SetBigTime] = useState(["00:00"]);
     const [lilTime, SetLilTime] = useState(["00:00"]);
@@ -29,17 +33,19 @@ function Timer(props) {
     const [completed, SetCompleted] = useState(false);
 
     let times = props.times;
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    
 
-    function runTimer() {
-        const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        let totalTime = times.reduce(reducer)
-        let index = 0;
+    function runTimer(totalTime) {
+       
+        
+        
         let currentTime = times[index];
 
         SetLilTime(formatTime(currentTime));
         SetBigTime(formatTime(totalTime));
 
-        let timeInterval = setInterval(function() {
+         timeInterval = setInterval(function() {
             totalTime--;
             currentTime--;
             
@@ -69,23 +75,28 @@ function Timer(props) {
             
             SetLilTime(formatTime(currentTime));
             SetBigTime(formatTime(totalTime));
-        }, 100)
+        }, 500)
     }
 
     useEffect(() => {console.log("Rendered!");}, []);
 
     if(runningTimer === false && props.run === true) {
         SetRunningTimer(true);
-        runTimer();
+        totalTime = times.reduce(reducer)
+        runTimer(totalTime);
+    }
+    else if(props.run === false && runningTimer === true){
+        SetRunningTimer(false)
+        clearInterval(timeInterval)
     }
 
     return (
         <Grid item xs={6} className="timers">
             <h1 className="exerciseName">{!runningTimer ? props.title : !completed ? props.currentExercise : "Workout Completed!"}</h1>
-            <div className="exerciseTime" style={{fontSize: "16vw"}}>
+            <div className="exerciseTime" style={{fontSize: "16vw", fontFamily: 'Roboto'}}>
                 {lilTime}
             </div>
-            <div className="exerciseTime" style={{fontSize: "5vw"}}>
+            <div className="exerciseTime" style={{fontSize: "5vw", fontFamily: 'Roboto'}}>
                 {bigTime}
             </div>
         </Grid>
