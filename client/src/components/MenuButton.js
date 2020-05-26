@@ -3,13 +3,13 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import API from "../utils/API"
 import { PromiseProvider } from 'mongoose';
 
 export default function MenuButton(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
-  
+    const history = useHistory()
     const location = useLocation();
   
     const handleClick = (event) => {
@@ -24,6 +24,7 @@ export default function MenuButton(props) {
     const signOut = (event) => {
         sessionStorage.setItem("currentUser", "");
         props.SetUser("");
+        history.push("/signin")
     }
 
     return(
@@ -38,20 +39,23 @@ export default function MenuButton(props) {
             open={Boolean(anchorEl)}
             onClose={() => {setAnchorEl(null);}}
             >
-            <MenuItem>
-                <Link to="/workouts" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+            <MenuItem onClick={() => history.push("/workouts")}>
+                {/* <Link to="/workouts" className={location.pathname === "/" ? "nav-link active" : "nav-link"} >
                     Workouts
-                </Link>
+                </Link> */}
+                Workouts
             </MenuItem>
             <MenuItem onClick={signOut}>
-                <Link to="/signin" className={location.pathname === "/signin" ? "nav-link active" : "nav-link"}>
+                {/* <Link to="/signin" className={location.pathname === "/signin" ? "nav-link active" : "nav-link"} >
                     Sign Out
-                </Link>
+                </Link> */}
+                Sign Out
             </MenuItem>
-            <MenuItem>
-                <Link to="/stats" className={location.pathname === "/stats" ? "nav-link active" : "nav-link"}>
+            <MenuItem onClick={() => history.push("/stats")}>
+                {/* <Link to="/stats" className={location.pathname === "/stats" ? "nav-link active" : "nav-link"} >
                     User Stats
-                </Link>
+                </Link> */}
+                User Stats
             </MenuItem>
             
         </Menu>

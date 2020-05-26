@@ -81,7 +81,7 @@ function RunExerciseList(props) {
                 {props.exercises.map((exercise, i) => {
                     if(i >= props.index) {
                         return (
-                            <TableRow key={i} style={i === props.index ? {backgroundColor: "lightgreen"} : {backgroundColor: "white"}}>
+                            <TableRow key={i} style={i === props.index ? {backgroundColor: "lightgreen"} : {backgroundColor: ""}}>
                                 <TableCell> <FitnessCenterIcon/> </TableCell>
                                 <TableCell component="th" scope="row">
                                     {exercise.exercise}
@@ -103,10 +103,10 @@ function RunExerciseList(props) {
         </TableContainer>
         <Grid container direction="column">
             <Grid container direction="row">
-                <IconButton className={classes.btn} color="secondary" size="medium" variant="contained" onClick={props.handleClick}>
+                <IconButton className={classes.btn} color="warning" size="medium" variant="contained" onClick={props.handleClick}>
                     <PlayCircleFilledWhiteIcon fontSize="large"></PlayCircleFilledWhiteIcon>
                 </IconButton>
-                <IconButton className={classes.btn} color="secondary" size="medium" variant="contained" >
+                <IconButton className={classes.btn} color="warning" size="medium" variant="contained" onClick={props.onClick}>
                     <PauseCircleFilledIcon fontSize="large"></PauseCircleFilledIcon>
                 </IconButton>
             </Grid>

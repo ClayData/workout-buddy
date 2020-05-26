@@ -1,7 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { Grid, Paper } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles'
 import API from '../../utils/API';
 import './Stats.css';
+
+const useStyles = makeStyles({
+    paperBackground: {
+        height:'92vh',
+        width: '100vw'
+    }
+})
 
 function formatTime(totalSeconds) {
     const hours = Math.floor(totalSeconds / (60*60));
@@ -14,6 +22,7 @@ function formatTime(totalSeconds) {
 function Stats() {
     const [userData, SetUserData] = useState({});
     const [totalTime, SetTotalTime] = useState(0);
+    const classes = useStyles();
 
     useEffect(() => {
         let time = 0;
@@ -29,18 +38,21 @@ function Stats() {
     }, []);
 
     return (
-        <div>
-            <h1>{sessionStorage.currentUser} Stats:</h1><br />
-            <div className="stat">
-                <strong>TOTAL WORKOUT TIME:</strong> {formatTime(totalTime)}
-            </div>
-            <div className="stat">
-                <strong>AVERAGE TIME/WORKOUT:</strong> {userData.completedWorkouts ? formatTime(totalTime / userData.completedWorkouts.length) : ""}
-            </div>
-            <div className="stat">
-                <strong>WORKOUTS COMPLETED:</strong> {userData.completedWorkouts ? userData.completedWorkouts.length : ""}
-            </div>
-        </div>
+        <Grid>
+            <Paper className={classes.paperBackground}>
+                
+                <h1>{sessionStorage.currentUser} Stats:</h1><br />
+                <div className="stat">
+                    <strong>TOTAL WORKOUT TIME:</strong> {formatTime(totalTime)}
+                </div>
+                <div className="stat">
+                    <strong>AVERAGE TIME/WORKOUT:</strong> {userData.completedWorkouts ? formatTime(totalTime / userData.completedWorkouts.length) : ""}
+                </div>
+                <div className="stat">
+                    <strong>WORKOUTS COMPLETED:</strong> {userData.completedWorkouts ? userData.completedWorkouts.length : ""}
+                </div>
+            </Paper>
+        </Grid>
     )
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import {FormControlLabel, Switch} from '@material-ui/core/';
 import MenuButton from './MenuButton';
 
 
@@ -26,7 +27,7 @@ function NavBar(props) {
               Workout Buddy
           </Typography>
           <Typography variant="h6" className={classes.title}>
-              
+            <FormControlLabel control={<Switch onClick={props.onClick} />} />
           </Typography>
           <Typography variant="h6" className={classes.title}>
               

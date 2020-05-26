@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import { ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 
@@ -31,6 +31,7 @@ function CompletedListItem(props) {
                 primary={props.workout.title}
             />
             </ListItem>
+            <Divider />
         </div>
     )
 }
