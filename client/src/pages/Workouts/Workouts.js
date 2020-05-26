@@ -6,6 +6,9 @@ import SavedListContainer from '../../components/SavedListContainer';
 import CompletedListContainer from '../../components/CompletedListContainer';
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+
+    },
     number: {
        width: '100px'
     },
@@ -25,7 +28,7 @@ const Workouts = () => {
     const classes = useStyles();
     return(
         <div>
-            <Grid container direction="row" justify="space-around" alignItems="baseline">
+            <Grid container direction="row" justify="space-around" alignItems="baseline" className={classes.root}>
                 <Grid item >
                     <Paper variant="outlined" className={classes.paper}>
                         <CompletedListContainer user={user}/>    

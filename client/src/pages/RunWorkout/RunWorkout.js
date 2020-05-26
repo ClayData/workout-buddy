@@ -71,7 +71,6 @@ function RunWorkout() {
                 <RunExerciseList exercises={exercises} index={workoutIndex} handleClick={handleClick} onClick={pauseTimer}/>
                 <Timer times={times} index={workoutIndex} title={workoutTitle} id={id} SetIndex={SetWorkoutIndex} currentExercise={exercises[workoutIndex] ? exercises[workoutIndex].exercise : ""} run={runWorkout} />
                 <Grid item xs={2}>
-
                 </Grid>
             </Grid>
         </div>

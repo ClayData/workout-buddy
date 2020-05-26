@@ -78,15 +78,19 @@ function RunExerciseList(props) {
                 </TableRow>
                 </TableHead>
                 <TableBody>
-                {props.exercises.map((exercise, i) => (
-                    <TableRow key={i} style={i === props.index ? {backgroundColor: "lightgreen"} : {backgroundColor: "white"}}>
-                        <TableCell> <FitnessCenterIcon/> </TableCell>
-                        <TableCell component="th" scope="row">
-                            {exercise.exercise}
-                        </TableCell>
-                        <TableCell align="left">{formatTime(exercise.duration)}</TableCell>
-                    </TableRow>
-                ))}
+                {props.exercises.map((exercise, i) => {
+                    if(i >= props.index) {
+                        return (
+                            <TableRow key={i} style={i === props.index ? {backgroundColor: "lightgreen"} : {backgroundColor: "white"}}>
+                                <TableCell> <FitnessCenterIcon/> </TableCell>
+                                <TableCell component="th" scope="row">
+                                    {exercise.exercise}
+                                </TableCell>
+                                <TableCell align="left">{formatTime(exercise.duration)}</TableCell>
+                            </TableRow>
+                        )
+                    }
+                })}
                 <TableRow key="total">
                     <TableCell></TableCell>
                     <TableCell component="th" scope="row">
@@ -98,20 +102,20 @@ function RunExerciseList(props) {
             </Table>
         </TableContainer>
         <Grid container direction="column">
-                <Grid item direction="row">
-                    <IconButton className={classes.btn} color="secondary" size="large" variant="contained" onClick={props.handleClick}>
-                        <PlayCircleFilledWhiteIcon fontSize="large"></PlayCircleFilledWhiteIcon>
-                    </IconButton>
-                    <IconButton className={classes.btn} color="secondary" size="large" variant="contained" onClick={props.onClick}>
-                        <PauseCircleFilledIcon fontSize="large"></PauseCircleFilledIcon>
-                    </IconButton>
-                </Grid>
-                <Grid>    
-                    <Button className={classes.btn} color="secondary" size="large" variant="contained" onClick={() => {
-                        history.push("/workouts")
-                    }}>Back To Workouts</Button>
-                </Grid>
+            <Grid container direction="row">
+                <IconButton className={classes.btn} color="secondary" size="medium" variant="contained" onClick={props.handleClick}>
+                    <PlayCircleFilledWhiteIcon fontSize="large"></PlayCircleFilledWhiteIcon>
+                </IconButton>
+                <IconButton className={classes.btn} color="secondary" size="medium" variant="contained" >
+                    <PauseCircleFilledIcon fontSize="large"></PauseCircleFilledIcon>
+                </IconButton>
             </Grid>
+            <Grid>    
+                <Button className={classes.btn} color="secondary" size="medium" variant="contained" onClick={() => {
+                    history.push("/workouts")
+                }}>Back To Workouts</Button>
+            </Grid>
+        </Grid>
     </Grid>
     )
 }

@@ -8,7 +8,7 @@ function formatTime(totalSeconds) {
     const minutes = Math.floor((totalSeconds % (60*60)) / 60);
     const seconds = totalSeconds % 60;
 
-    return hours + " Hours " + minutes + " Minutes " + seconds + " Seconds ";
+    return hours + " Hours " + minutes + " Minutes " + Math.round(seconds) + " Seconds ";
 }
 
 function Stats() {
@@ -19,11 +19,11 @@ function Stats() {
         let time = 0;
         API.getUserData(sessionStorage.getItem("currentUser")).then((data) => {
             SetUserData(data.data[0]);
-            data.data[0].completedWorkouts.map((workout) => {
-                workout.map((exercise) => {
+            for(let workout of data.data[0].completedWorkouts) {
+                for(let exercise of workout) {
                     time += exercise.duration
-                })
-            });
+                }
+            }
             SetTotalTime(time);
         })
     }, []);
