@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link, useLocation } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -12,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 752,
     },
     demo: {
+        backgroundColor: theme.palette.background.paper,
         width: '12vw'
     },
     title: {
@@ -22,30 +24,40 @@ const useStyles = makeStyles((theme) => ({
 function SavedWorkoutItem(props) {
   const classes = useStyles();
   const location = useLocation();
+  const history = useHistory();
+
   return (
     <div>
-            <ListItem className={classes.demo} onClick={() => {}} data-id={props.workout._id} button>
+            <ListItem className={classes.demo} onClick={() => {
+                 history.push(`/runworkout/${props.workout._id}`)
+            }} data-id={props.workout._id} button>
                 <ListItemIcon>
-                    <Link to={`/runworkout/${props.workout._id}`} 
+                    {/* <Link to={`/runworkout/${props.workout._id}`} 
                     className={location.pathname === `/runworkout/${props.workout._id}` ? "nav-link active" : "nav-link"}
-                    style={{ "textDecoration": "none"}}
-                    >
+                    style={{ "color": "black","textDecoration": "none"}}
+                    > */}
+
                         <FitnessCenterIcon />
-                    </Link>
+                    {/* </Link> */}
                 </ListItemIcon>
 
                 <ListItemText className={classes.text} >
-                <Link to={`/runworkout/${props.workout._id}`} 
+                {/* <Link to={`/runworkout/${props.workout._id}`} 
                 className={location.pathname === `/runworkout/${props.workout._id}` ? "nav-link active" : "nav-link"}
-                style={{ "textDecoration": "none"}}
-                >
-                    {props.workout.title}
-                </Link>
+                style={{ "color": "black","textDecoration": "none"}}
+                > */}
+                     {props.workout.title} 
+                {/* </Link> */}
 
+
+
+                   
                 </ListItemText>
-                <IconButton onClick={props.onClick}>
-                    <DeleteForeverIcon edge="end" aria-label="delete"/>
-                </IconButton>
+                <ListItemSecondaryAction onClick={props.onClick}>
+                    <IconButton >
+                        <DeleteForeverIcon edge="end" aria-label="delete"/>
+                    </IconButton>
+                </ListItemSecondaryAction>
                 
             </ListItem>
     </div>

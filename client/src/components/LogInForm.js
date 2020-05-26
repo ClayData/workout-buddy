@@ -32,6 +32,7 @@ function LogInForm(props) {
                variant="contained"
                type="submit"
                className={classes.btn}
+               color="primary"
                >
                    Submit
                </Button> <br/> <br/>

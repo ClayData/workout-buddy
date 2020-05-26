@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid, Paper, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CreateWorkout from '../../components/CreateWorkout'
 import SavedListContainer from '../../components/SavedListContainer';
@@ -7,10 +7,16 @@ import CompletedListContainer from '../../components/CompletedListContainer';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-
+        backgroundColor: "#f4f7f9"
     },
     number: {
        width: '100px'
+    },
+    background:{
+       width: '100vw',
+       display: 'flex',
+       alignItems: 'center',
+       justifyContent: 'center',
     },
     paper: {
         height: '100vh',
@@ -27,25 +33,27 @@ const Workouts = () => {
 
     const classes = useStyles();
     return(
-        <div>
-            <Grid container direction="row" justify="space-around" alignItems="baseline" className={classes.root}>
-                <Grid item >
-                    <Paper variant="outlined" className={classes.paper}>
-                        <CompletedListContainer user={user}/>    
-                    </Paper>
-                </Grid>       
-                <Grid item>
-                    <Paper variant="outlined" className={classes.paper}>
-                        <CreateWorkout workoutAdded={workoutAdded} SetWorkoutAdded={SetWorkoutAdded} user={user}/>
-                    </Paper>
-                </Grid>
-                <Grid item >
-                    <Paper variant="outlined" className={classes.paper}>
-                        <SavedListContainer workoutAdded={workoutAdded} SetWorkoutAdded={SetWorkoutAdded} user={user}/>
-                    </Paper>
-                </Grid>    
+       
+            <Grid container className={classes.root}>
+                <Paper className={classes.background} square>
+                    <Grid item >
+                        <Paper variant="outlined" className={classes.paper}>
+                            <CompletedListContainer user={user}/>    
+                        </Paper>
+                    </Grid>       
+                    <Grid item>
+                        <Paper variant="outlined" className={classes.paper}>
+                            <CreateWorkout workoutAdded={workoutAdded} SetWorkoutAdded={SetWorkoutAdded} user={user}/>
+                        </Paper>
+                    </Grid>
+                    <Grid item >
+                        <Paper variant="outlined" className={classes.paper}>
+                            <SavedListContainer workoutAdded={workoutAdded} SetWorkoutAdded={SetWorkoutAdded} user={user}/>
+                        </Paper>
+                    </Grid>    
+                </Paper>
             </Grid>
-        </div>
+        
     )
 }
 

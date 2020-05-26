@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles';
 import { useParams } from "react-router-dom";
 import Timer from '../../components/Timer';
@@ -21,7 +22,11 @@ const useStyles = makeStyles((theme) => ({
     control: {
         padding: theme.spacing(2),
     },
-    
+    workoutHolder:{
+        height: '92vh',
+        width: '100vw',
+       padding: '2rem'
+    }
 }));
 
 function RunWorkout() {
@@ -64,16 +69,19 @@ function RunWorkout() {
     const classes = useStyles();
 
     return (
-        <div className="runWorkout">
-            <br/>
-            <h2>{workoutTitle}</h2>
-            <Grid container justify="center" className={classes.root} spacing={1}>
-                <RunExerciseList exercises={exercises} index={workoutIndex} handleClick={handleClick} onClick={pauseTimer}/>
-                <Timer times={times} index={workoutIndex} title={workoutTitle} id={id} SetIndex={SetWorkoutIndex} currentExercise={exercises[workoutIndex] ? exercises[workoutIndex].exercise : ""} run={runWorkout} />
-                <Grid item xs={2}>
+        // <div className="runWorkout">
+            <Paper className={classes.workoutHolder}>
+                <br/>
+                <h2>{workoutTitle}</h2>
+                <Grid container justify="center" className={classes.root} spacing={1}>
+                    
+                        <RunExerciseList exercises={exercises} index={workoutIndex} handleClick={handleClick} onClick={pauseTimer}/>
+                        <Timer times={times} index={workoutIndex} title={workoutTitle} id={id} SetIndex={SetWorkoutIndex} currentExercise={exercises[workoutIndex] ? exercises[workoutIndex].exercise : ""} run={runWorkout} />
+                        <Grid item xs={2}>
+                        </Grid>
                 </Grid>
-            </Grid>
-        </div>
+            </Paper>
+        // </div>
     )
 }
 

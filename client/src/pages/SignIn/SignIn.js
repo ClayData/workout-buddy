@@ -12,7 +12,7 @@ const useStyles = makeStyles({
         
     },
     formHolder:{
-
+        height: '92vh'
     },
     image:{
         backgroundImage: `url(${Image})`,
@@ -57,16 +57,22 @@ function SignIn(props) {
 
     return(
             <Grid container className={classes.root}>
-                <Grid item xs className={classes.formHolder}>
-                    <Grid item className={classes.headerContainer}>
-                        <Typography className={classes.header}>
-                            Log-In / Sign-Up
-                        </Typography>
-                    </Grid>
-                    <LogInForm onSubmit={onSubmit} loginError={error}/>
+                 <Grid item xs >
+                     <Paper className={classes.formHolder} square>
+                   
+                        <Grid item className={classes.headerContainer}>
+                            <Typography className={classes.header}>
+                                Log-In / Sign-Up
+                            </Typography>
+                        </Grid>
+                        <Grid item xs>
+                            <LogInForm onSubmit={onSubmit} loginError={error}/>
+                        </Grid>
+
+                     </Paper>
                 </Grid>
                 <Grid item xs>
-                    <Paper className={classes.image} elevation={2}>
+                    <Paper className={classes.image} elevation={2} square>
                         
                     </Paper>
                 </Grid>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import {FormControlLabel, Switch} from '@material-ui/core/';
 import NavBar from './components/NavBar';
 import Workouts from './pages/Workouts/Workouts';
 import SignIn from './pages/SignIn/SignIn';
@@ -10,7 +9,8 @@ import Stats from './pages/Stats/Stats';
 
 const themeObject ={
   palette: {
-    primary: { main: '#053f5b' },
+    primary: { 
+      main: '#053f5b' },
     secondary: { main: '#5e3c6f'},
     type: 'light',
   },
@@ -53,8 +53,7 @@ function App() {
     <ThemeProvider theme={themeConfig}>
       <Router>
             <div className="App">
-              <NavBar user={user} SetUser={SetUser} />
-              <FormControlLabel control={<Switch onClick={toggleDarkMode} />} />
+              <NavBar user={user} SetUser={SetUser} onClick={toggleDarkMode} />
               <Route exact path="/" component={() => {return (<SignIn SetUser={SetUser} />)}} />
               <Route exact path="/workouts" component={Workouts} />
               <Route exact path="/signin" component={() => {return (<SignIn SetUser={SetUser} />)}} />
