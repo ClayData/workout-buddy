@@ -10,7 +10,7 @@ function App() {
   const [user, SetUser] = useState("");
   useEffect(() => {
     SetUser(sessionStorage.getItem("currentUser"));
-  })
+  }, [])
   return (
     <Router>
         <div className="App">

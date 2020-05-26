@@ -1,8 +1,8 @@
 import React from 'react';
 import { TextField, Button, Grid }from '@material-ui/core/';
-
 import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from 'react-hook-form';
+import LoginAlert from './LoginAlert';
 
 const useStyles = makeStyles({
     input:{
@@ -34,7 +34,8 @@ function LogInForm(props) {
                className={classes.btn}
                >
                    Submit
-               </Button>
+               </Button> <br/> <br/>
+               <LoginAlert style={props.loginError ? {visibility: "visible"} : {visibility: "hidden"}} />
                </Grid>
            </form> 
           
