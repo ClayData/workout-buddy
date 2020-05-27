@@ -41,19 +41,11 @@ function RunWorkout() {
     
 
     function handleClick(event) {
-        if(runWorkout === false) {
-            SetRunWorkout(true);
-            //event.target.value = "Stop Workout"
-        }
-        else {
-            SetRunWorkout(false);
-            //event.target.value = "Start Workout"
-        }
+        SetRunWorkout(true);
     }
 
     function pauseTimer(event) {
         SetRunWorkout(false);
-        
     }
 
     const {id} = useParams();

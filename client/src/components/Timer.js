@@ -22,9 +22,9 @@ function formatTime(totalSeconds) {
     return minutes + ":" + seconds;
 }
 
-    let timeInterval
-    let index = 0;
-    let totalTime
+let timeInterval;
+let index = 0;
+let totalTime;
 
 function Timer(props) {
     const [bigTime, SetBigTime] = useState(["00:00"]);
@@ -33,13 +33,10 @@ function Timer(props) {
     const [completed, SetCompleted] = useState(false);
 
     let times = props.times;
+
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     
-
     function runTimer(totalTime) {
-       
-        
-        
         let currentTime = times[0];
 
         SetLilTime(formatTime(currentTime));
@@ -70,14 +67,14 @@ function Timer(props) {
             else if(currentTime === 0) {
                 times.shift()
                 currentTime= times[0]
-                // currentTime = times[index + 1]
-                // index++;
+
+                index++;
                 props.SetIndex(index);
             }
             
             SetLilTime(formatTime(currentTime));
             SetBigTime(formatTime(totalTime));
-        }, 500)
+        }, 100)
     }
 
     useEffect(() => {console.log("Rendered!");}, []);
