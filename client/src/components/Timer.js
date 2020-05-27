@@ -40,7 +40,7 @@ function Timer(props) {
        
         
         
-        let currentTime = times[index];
+        let currentTime = times[0];
 
         SetLilTime(formatTime(currentTime));
         SetBigTime(formatTime(totalTime));
@@ -68,8 +68,10 @@ function Timer(props) {
                 clearInterval(timeInterval)
             }
             else if(currentTime === 0) {
-                currentTime = times[index + 1]
-                index++;
+                times.shift()
+                currentTime= times[0]
+                // currentTime = times[index + 1]
+                // index++;
                 props.SetIndex(index);
             }
             
