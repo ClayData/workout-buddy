@@ -6,7 +6,7 @@ import API from '../../utils/API';
 
 const useStyles = makeStyles({
     paperBackground: {
-        height:'92vh',
+        minHeight:'92vh',
         width: '100vw',
         fontFamily: 'Roboto'
     },
