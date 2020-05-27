@@ -2,7 +2,6 @@ const express = require("express");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const routes = require("./routes/apiRoutes");
-const bodyParser = require("body-parser");
 const app = express();
 const passport = require("./passport/setup");
 
