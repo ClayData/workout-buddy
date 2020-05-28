@@ -66,7 +66,7 @@ function Timer(props) {
             }
             else if(currentTime === 0) {
                 times.shift()
-                currentTime= times[0]
+                currentTime = times[0]
 
                 index++;
                 props.SetIndex(index);
