@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
     },
     workoutHolder:{
-        height: '92vh',
+        minHeight: '92vh',
         width: '100vw',
        padding: '2rem',
        fontFamily: 'Roboto'
@@ -38,6 +38,7 @@ function RunWorkout() {
     const [workoutTitle, SetWorkoutTitle] = useState("");
     const [exercises, SetExercises] = useState([]);
     const [runWorkout, SetRunWorkout] = useState(false);
+    
     
 
     function handleClick(event) {
@@ -71,7 +72,13 @@ function RunWorkout() {
                 <h2>{workoutTitle}</h2>
                 <Grid container justify="center" className={classes.root} spacing={1}>
                     
-                        <RunExerciseList exercises={exercises} index={workoutIndex} handleClick={handleClick} onClick={pauseTimer}/>
+                        <RunExerciseList 
+                        exercises={exercises} 
+                        index={workoutIndex} 
+                        handleClick={handleClick} 
+                        onClick={pauseTimer}
+                        />
+
                         <Timer 
                         times={times} 
                         index={workoutIndex} 

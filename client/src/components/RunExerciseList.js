@@ -112,6 +112,7 @@ function RunExerciseList(props) {
             </Grid>
             <Grid>    
                 <Button className={classes.btn} color="secondary" size="medium" variant="contained" onClick={() => {
+                   
                     history.push("/workouts")
                 }}>Back To Workouts</Button>
             </Grid>

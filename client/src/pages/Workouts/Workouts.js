@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Grid, Paper, Container } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CreateWorkout from '../../components/CreateWorkout'
 import SavedListContainer from '../../components/SavedListContainer';

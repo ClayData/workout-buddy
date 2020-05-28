@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     }));
 
 function CompletedListContainer(props) {
-    const [dense, setDense] = React.useState(false);
+    const [dense] = React.useState(false);
     const [workouts, setWorkouts] = useState([]);
     
     const classes = useStyles();
