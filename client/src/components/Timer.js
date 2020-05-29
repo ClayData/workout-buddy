@@ -74,7 +74,7 @@ function Timer(props) {
             
             SetLilTime(formatTime(currentTime));
             SetBigTime(formatTime(totalTime));
-        }, 100)
+        }, 1000)
     }
 
     useEffect(() => {console.log("Rendered!");}, []);
