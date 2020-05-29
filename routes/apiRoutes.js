@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const path = require("path")
 const workoutController = require("../controllers/workoutController");
 const passport = require("passport");
 
@@ -49,6 +50,10 @@ router.post("/register_login", (req, res, next) => {
 router.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
+  });
+
+  router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
   });
 
 module.exports = router;
