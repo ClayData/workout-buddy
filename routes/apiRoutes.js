@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const path = require("path")
 const workoutController = require("../controllers/workoutController");
 const passport = require("passport");
 
