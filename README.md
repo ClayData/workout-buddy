@@ -1,4 +1,5 @@
 # workout-buddy
+Build your own home workout
 
 ### Use/comparison with existing apps:
 
