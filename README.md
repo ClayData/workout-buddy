@@ -9,43 +9,39 @@ Workout buddy is an application that allows you to create and run through home w
 
 This is the landing page of the application and where users can both sign-up and log-in to the application through one form. The form uses passport.js for authentication and users persist as logged in until they close the webpage or logout. When the user signs in it saves their username to session storage so the information can easily be used for other functionalisty.
 
+![](wb-login.png)
 
+### Create workout
 
-Users can create and save their own custom workout routines with custom times for each exercise. When they start their workout, a timer will begin indicating how much time is left for a particular exercise. When time is done, it will move on to the next exercise with a new timer.
+The create workout page consists of 3 different columns. The Favorite Workouts column which displays the different saved workouts and how many times they have been completed. Next is the Create New Workout column, which is fairly self explanatory. The user adds the workout in the first text box, the name of the exercise in the second and how many seconds they will do the exercise in the seconds textbox. The user then hits the Add Exercise button and the exercise will replace the No Exercise Added Yet text, starting a list of added exercises. The exercise name and seconds text box will clear and the user may add more exercises. The final column is the Saved Workouts list which is a list of buttons that when clicked will take the user to the workouts page and have the user run through the clicked workout. The list items in Saved Workouts also have a trash can icon to delete workouts if the user is so inclined. When the icon is clicked a text box will appear and ask if the user is sure they want to delete. On confirmation the workout will be deleted. 
 
-Users will also be able to select preset workout for a "quick start" option. There will be options for preset 5 minute, 10 minute and 15 minute workouts.
+![](wb-create.png)
 
-The user page will also show a user what workouts they have performed recently and their saved workout routines. There will also be a graph to show them how much time they have spent per week working out.
+### Run Workout
 
-### Schedule:
+The Run Workout page displays a list of the exercises in the workout and their associated times. The user presses the play button located below the list and the two times on the right of screen will display the exercise time on the larger timer and the workout time on the smaller. The pause button will pause the workout but when the play is hit it will revert back to the full time of that particular exercise. 
 
-#### May 16: MVP
-1. Working Data Base - Erik
-2. API routes: POST, GET to/from db - After db created
-3. Server - Done
-4. React pages/components
-    * Create workout page
-    * Workout Form component - Sawyer
-    * Completed workouts component - Clay
-    * Login page - Talila
-    * Workout page
-    * Timers component - Sawyer
+![](wb-timer.png)
 
-#### May 23: Additions
-1. Preset workouts
-2. Profile page
-3. Charts
-4. Improve design
-5. Authentication - Clay
+### User Stats
 
-#### May 30: Final Additions
-1. Presentation slides
-2. Final tweaks to layout
-3. Share workouts to common pool (through Admin)
-4. PWA?
+User Stats are accessed through the hamburger menu and the page displays the total workout time of all workouts completed, the average time per workout and the number of workouts completed. 
 
-### Mockup:
-![Sign In](./Sign-in.jpg?raw=true "Sign In")
-![Sign Up](./Sign-up.jpg?raw=true "Sign Up")
-![Workout Buddy](./landingPage.jpg?raw=true "Workout Buddy")
-![Workout Page](./Workout-Page.jpg?raw=true "Workout Page")
+![](wb-stats.png)
+
+### Dark Mode
+
+The application also has a dark mode functionality that can be toggled with the switch on the navbar.
+
+![](wb-darkmode.png)
+
+### Tech Used
+* MongoDB
+* Express
+* React
+* Node
+* Material-Ui
+* Passport.js
+* React-Hook-Form
+* React-Router-Dom
+* axios
