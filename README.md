@@ -1,6 +1,8 @@
 # workout-buddy
 Build your own home workout
 
+Live Site: https://workout-bud.herokuapp.com/
+
 ### Use/comparison with existing apps:
 
 Workout buddy is an application that allows you to create and run through home workouts. With gyms closed and lots of people doing home workouts, we wanted to make an application to make following a home workout easier. Users will not have to struggle setting timers on their phones or remembering which workouts to perform. There appears to be many mobile applications for following home workouts, but many of these are geared toward preset workouts. The disadvantage of running this on a mobile application is the relatively small size of phones. When you are doing a workout and moving around, it is not easy to read a phone screen. It would be advantageous to see the timer and workout routine on a larger screen and not have to pick up your phone to see instructions between each exercise.
