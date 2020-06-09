@@ -1,37 +1,37 @@
-let mongoose = require("mongoose");
-let db = require("../models/exerciseModel");
+const mongoose = require("mongoose");
+const db = require("../models/exerciseModel");
 
 mongoose.connect("mongodb://localhost/workoutDB", {
-    useNewUrlParser: true,
-    useFindAndModify: false
+  useNewUrlParser: true,
+  useFindAndModify: false
 });
 
-let workoutSeed = [
-    {
-        title: "Full Body",
-        exercises: [
-                    { 
-                        exercise: "Push-Ups",
-                        duration: 30 
-                    },
-                    {
-                        exercise: "Squats",
-                        duration: 30
-                    },
-                    {
-                        exercise: "Burpees",
-                        duration: 30
-                    },
-                    {
-                        exercise: "Lunges",
-                        duration: 30
-                    },
-                    {
-                        exercise: "Plank",
-                        duration: 30
-                    }
-                    ]
-    }
+const workoutSeed = [
+  {
+    title: "Full Body",
+    exercises: [
+      {
+        exercise: "Push-Ups",
+        duration: 30
+      },
+      {
+        exercise: "Squats",
+        duration: 30
+      },
+      {
+        exercise: "Burpees",
+        duration: 30
+      },
+      {
+        exercise: "Lunges",
+        duration: 30
+      },
+      {
+        exercise: "Plank",
+        duration: 30
+      }
+    ]
+  }
 ];
 
 db.deleteMany({})

@@ -7,24 +7,24 @@ const passport = require("./passport/setup");
 
 const PORT = process.env.PORT || 3001;
 
-app.use(express.urlencoded({ extended:true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
+  app.use(express.static("client/build"));
 }
 
-app.use(session({ secret: "spicy meatball",
-                  resave: false,
-                  saveUninitialized: true      
-}))
+app.use(session({
+  secret: "spicy meatball",
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutDB")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutDB");
 
-app.listen(PORT, function() {
-    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-})
+app.listen(PORT, function () {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+});

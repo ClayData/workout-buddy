@@ -10,22 +10,34 @@ const useStyles = makeStyles({
     },
     btn:{
         marginTop: '1rem'
+    },
+    errMsg: {
+        fontFamily: "Roboto",
     }
 })
 
 function LogInForm(props) {
     const classes = useStyles();
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, errors } = useForm();
 
 
     return(
         <Grid style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '50vh'}}>
            <form onSubmit={handleSubmit(props.onSubmit)}>
-                <Grid item>
-                    <TextField label="Username" variant="outlined" name="email" inputRef={register} required className={classes.input}/>
+                <Grid item direction="column">
+                    <TextField label="Username" variant="outlined" name="email" inputRef={register({
+                        minLength: 1,
+                        maxLength: 15,
+                    })} required className={classes.input}/>
+                   <p style={classes.errMsg}>{errors.password && "Must be between 1 - 15 characters"}</p>
                 </Grid>
-                <Grid item>
-                    <TextField label="Password" variant="outlined" name="password" inputRef={register} required className={classes.input}/>
+                <Grid item direction="column">
+                    <TextField label="Password" variant="outlined" name="password" inputRef={register({
+                        minLength: 5,
+                        maxLength: 15,
+                        
+                    })} required className={classes.input}/>
+                    <p style={classes.errMsg}>{errors.password && "Must be between 5 - 15 characters"}</p>
                 </Grid>
                 <Grid>
                <Button 
@@ -39,7 +51,6 @@ function LogInForm(props) {
                <LoginAlert style={props.loginError ? {visibility: "visible"} : {visibility: "hidden"}} />
                </Grid>
            </form> 
-          
         </Grid>
     )
 }
