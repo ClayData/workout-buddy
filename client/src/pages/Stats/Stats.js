@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Grid, Paper } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles';
+import StatsTable from '../../components/StatsTable';
 import API from '../../utils/API';
 
 
@@ -25,7 +26,7 @@ function formatTime(totalSeconds) {
     const minutes = Math.floor((totalSeconds % (60*60)) / 60);
     const seconds = totalSeconds % 60;
 
-    return hours + " Hours " + minutes + " Minutes " + Math.round(seconds) + " Seconds ";
+    return hours + " : " + minutes + " : " + Math.round(seconds) + "s";
 }
 
 function Stats() {
@@ -49,8 +50,12 @@ function Stats() {
     return (
         <Grid container>
             <Paper className={classes.paperBackground}>
-                
-                <h1 className={classes.header}>{sessionStorage.currentUser} Stats:</h1><br />
+            <h1 className={classes.header}>{sessionStorage.currentUser} Stats:</h1><br />
+                <StatsTable 
+                totalTime={formatTime(totalTime)}
+                avgTime={userData.completedWorkouts ? formatTime(totalTime / userData.completedWorkouts.length) : ""}
+                totalCompleted={userData.completedWorkouts ? userData.completedWorkouts.length : ""}
+                />
                 <div className={classes.stat}>
                     <strong>TOTAL WORKOUT TIME:</strong> {formatTime(totalTime)}
                 </div>

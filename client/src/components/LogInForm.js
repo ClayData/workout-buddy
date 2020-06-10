@@ -29,7 +29,7 @@ function LogInForm(props) {
                         minLength: 1,
                         maxLength: 15,
                     })} required className={classes.input}/>
-                   <p style={classes.errMsg}>{errors.password && "Must be between 1 - 15 characters"}</p>
+                   <p className={classes.errMsg}>{errors.password && "Must be between 1 - 15 characters"}</p>
                 </Grid>
                 <Grid item direction="column">
                     <TextField label="Password" variant="outlined" name="password" inputRef={register({
@@ -37,7 +37,7 @@ function LogInForm(props) {
                         maxLength: 15,
                         
                     })} required className={classes.input}/>
-                    <p style={classes.errMsg}>{errors.password && "Must be between 5 - 15 characters"}</p>
+                    <p className={classes.errMsg}>{errors.password && "Must be between 5 - 15 characters"}</p>
                 </Grid>
                 <Grid>
                <Button 
